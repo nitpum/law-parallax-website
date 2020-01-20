@@ -7,7 +7,7 @@
         <img src="/imgs/home/title.png" />
       </div>
       <div class="footer">
-        <img src="/imgs/home/scene1/top.png" />
+        <img src="/imgs/home/scene2/top.png" />
       </div>
     </div>
     <div id="scene2"></div>
@@ -25,17 +25,19 @@ export default {
         triggerHook: 'onEnter'
       })
       .on('leave', function(event) {})
+
     const scene2 = this.$scrollmagic
       .scene({
         triggerElement: '#scene2',
         triggerHook: 1,
-        duration: 1000
+        duration: 2000
       })
       .setTween(
         TweenMax.to('#title', 1, {
-          y: '100%'
+          y: '200%'
         })
       )
+
     this.$scrollmagic.addScene(header)
     this.$scrollmagic.addScene(scene2)
 
@@ -111,7 +113,7 @@ export default {
 #scene2 {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 200vh;
   z-index: 2;
   background-color: #ffffff;
 }
