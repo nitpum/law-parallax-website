@@ -47,6 +47,12 @@
           </div>
         </div>
       </div>
+      <div id="bottom_1">
+        <img src="/imgs/home/scene4/bottom.png" alt="" />
+      </div>
+    </section>
+    <section id="scene5">
+      <img src="/imgs/home/scene5/bg.png" atl="" />
     </section>
   </div>
 </template>
@@ -112,9 +118,14 @@ export default {
         offset: '400%'
       })
       .setTween(
-        TweenMax.from('.country', 1, {
-          scale: 0
-        })
+        new TimelineMax().add([
+          TweenMax.from('.country', 1, {
+            scale: 0
+          }),
+          TweenMax.from('#bottom_1', 1, {
+            y: '200%'
+          })
+        ])
       )
       .addIndicators()
 
@@ -329,6 +340,26 @@ section {
         width: 100%;
       }
     }
+  }
+
+  #bottom_1 {
+    position: absolute;
+    width: 100%;
+    bottom: -60%;
+    left: 0;
+    z-index: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+#scene5 {
+  width: 100%;
+  height: auto;
+
+  img {
+    width: 100%;
   }
 }
 </style>
