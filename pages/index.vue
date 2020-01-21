@@ -29,10 +29,23 @@
     <section id="scene3"></section>
     <section id="scene4">
       <div class="top">
-        <img src="/imgs/home/scene2/top.png" />
+        <!-- <img src="/imgs/home/scene2/top.png" /> -->
       </div>
       <div id="sign">
         <img src="/imgs/home/scene4/sign.png" />
+      </div>
+      <div class="countries_container">
+        <div id="countries">
+          <div class="country">
+            <img src="/imgs/home/scene4/england.png" alt="" />
+          </div>
+          <div class="country">
+            <img src="/imgs/home/scene4/thai.png" alt="" />
+          </div>
+          <div class="country china">
+            <img src="/imgs/home/scene4/china.png" alt="" />
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -86,8 +99,8 @@ export default {
         offset: -120
       })
       .setTween(
-        TweenMax.from('#sign', 2, {
-          y: -600
+        TweenMax.from('#sign', 1, {
+          y: -500
         })
       )
       .addIndicators()
@@ -98,6 +111,11 @@ export default {
         duration: 250,
         offset: '400%'
       })
+      .setTween(
+        TweenMax.from('.country', 1, {
+          scale: 0
+        })
+      )
       .addIndicators()
 
     this.$scrollmagic.addScene(scene1)
@@ -252,33 +270,64 @@ section {
 
 #scene4 {
   background-image: url('/imgs/home/scene4/bg.png');
-  background-size: cover;
+  background-size: 100% 150%;
   width: 100%;
-  height: 150vh;
+  height: 120vh;
   text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
+  flex-wrap: wrap;
 
   .top {
     position: absolute;
-    top: -5%;
+    top: 0;
     left: 0;
     width: 100%;
     transform: scaleY(-1);
     z-index: 1;
-    img {
-      width: 100%;
-      height: auto;
-    }
+    background-image: url('/imgs/home/scene2/top.png');
+    background-size: contain, 100%;
+    background-repeat: repeat-x;
+    height: 100%;
+    max-height: 200px;
   }
 
   #sign {
     max-width: 700px;
+    position: absolute;
+    top: 0;
     width: 100%;
 
     img {
       width: 100%;
+    }
+  }
+
+  .countries_container {
+    width: 100%;
+    display: flex;
+  }
+  #countries {
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1024px;
+    width: 100%;
+
+    .country {
+      max-width: 200px;
+      margin-left: 30px;
+
+      &.china {
+        max-width: 250px;
+      }
+      img {
+        width: 100%;
+      }
     }
   }
 }
