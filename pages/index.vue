@@ -27,13 +27,21 @@
       </div>
     </section>
     <section id="scene3"></section>
+    <section id="scene4">
+      <div class="top">
+        <img src="/imgs/home/scene2/top.png" />
+      </div>
+      <div id="sign">
+        <img src="/imgs/home/scene4/sign.png" />
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import { TweenMax, TimelineMax } from 'gsap'
 
-var scene1, scene2
+var scene1, scene2, scene3, scene4, scene4_2
 
 export default {
   mounted() {
@@ -70,8 +78,32 @@ export default {
       )
       .addIndicators()
 
+    scene4 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene4',
+        triggerHook: 0.5,
+        duration: 300,
+        offset: -120
+      })
+      .setTween(
+        TweenMax.from('#sign', 2, {
+          y: -600
+        })
+      )
+      .addIndicators()
+    scene4_2 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene4',
+        triggerHook: 0.5,
+        duration: 250,
+        offset: '400%'
+      })
+      .addIndicators()
+
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
+    this.$scrollmagic.addScene(scene4)
+    this.$scrollmagic.addScene(scene4_2)
 
     this.$scrollmagic.handleScrollTo = function(target) {
       TweenMax.to(window, 0.5, {
@@ -84,6 +116,8 @@ export default {
   beforeDestroy() {
     this.$scrollmagic.removeScene(scene1)
     this.$scrollmagic.removeScene(scene2)
+    this.$scrollmagic.removeScene(scene4)
+    this.$scrollmagic.removeScene(scene4_2)
   }
 }
 </script>
@@ -94,6 +128,11 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
 }
 
 #scene1 {
@@ -206,5 +245,41 @@ export default {
 #scene3 {
   width: 100%;
   height: 100vh;
+  position: relative;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+#scene4 {
+  background-image: url('/imgs/home/scene4/bg.png');
+  background-size: cover;
+  width: 100%;
+  height: 150vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .top {
+    position: absolute;
+    top: -5%;
+    left: 0;
+    width: 100%;
+    transform: scaleY(-1);
+    z-index: 1;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  #sign {
+    max-width: 700px;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 </style>
