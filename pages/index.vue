@@ -26,10 +26,17 @@
         </div>
       </div>
     </section>
-    <section id="scene3"></section>
+    <section id="scene2_2">
+      <div class="fact" @click="fact = !fact">
+        <img src="/imgs/home/scene2/fact.png" />
+        <div class="detail" :class="{ display: fact }">
+          <img src="/imgs/home/scene2/fact_detail.png" />
+        </div>
+      </div>
+    </section>
     <section id="scene4">
       <div class="top">
-        <!-- <img src="/imgs/home/scene2/top.png" /> -->
+        <img src="/imgs/home/scene2/top.png" />
       </div>
       <div id="sign">
         <img src="/imgs/home/scene4/sign.png" />
@@ -63,6 +70,11 @@ import { TweenMax, TimelineMax } from 'gsap'
 var scene1, scene2, scene3, scene4, scene4_2
 
 export default {
+  data() {
+    return {
+      fact: false
+    }
+  },
   mounted() {
     scene1 = this.$scrollmagic
       .scene({
@@ -271,12 +283,33 @@ section {
   }
 }
 
-#scene3 {
+#scene2_2 {
   width: 100%;
   height: 100vh;
   position: relative;
   background-color: #ffffff;
-  z-index: 1;
+  z-index: 11;
+
+  .fact {
+    position: absolute;
+    right: 10%;
+    top: -100px;
+    cursor: pointer;
+
+    .detail {
+      position: absolute;
+      left: -200%;
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.5s all;
+
+      &.display {
+        opacity: 1;
+        transform: scale(1);
+        transition: 0.5s all;
+      }
+    }
+  }
 }
 
 #scene4 {
