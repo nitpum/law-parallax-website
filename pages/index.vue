@@ -47,13 +47,13 @@
           </div>
         </div>
       </div>
-      <div id="bottom_1">
+      <!-- <div id="bottom_1">
         <img src="/imgs/home/scene4/bottom.png" alt="" />
-      </div>
+      </div> -->
     </section>
-    <section id="scene5">
+    <!-- <section id="scene5">
       <img src="/imgs/home/scene5/bg.png" atl="" />
-    </section>
+    </section> -->
   </div>
 </template>
 
