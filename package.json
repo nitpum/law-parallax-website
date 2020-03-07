@@ -2,7 +2,7 @@
   "name": "law-parallax-website",
   "version": "1.0.0",
   "description": "Website",
-  "author": "nitpum",
+  "author": "",
   "private": true,
   "scripts": {
     "dev": "nuxt",
