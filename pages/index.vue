@@ -34,9 +34,9 @@
         </div>
       </div>
     </section>
-    <section id="scene4">
+    <section id="scene3">
       <div class="top">
-        <img src="/imgs/home/scene2/top.png" />
+        <!-- <img src="/imgs/home/scene2/top.png" /> -->
       </div>
       <div id="sign">
         <img src="/imgs/home/scene4/sign.png" />
@@ -312,8 +312,8 @@ section {
   }
 }
 
-#scene4 {
-  background-image: url('/imgs/home/scene4/bg.png');
+#scene3 {
+  background-image: url('/imgs/home/scene3/bg.png');
   background-size: 100% 150%;
   width: 100%;
   height: 120vh;
