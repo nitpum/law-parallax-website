@@ -39,21 +39,31 @@
         <!-- <img src="/imgs/home/scene2/top.png" /> -->
       </div>
       <div id="sign">
-        <img src="/imgs/home/scene4/sign.png" />
+        <img src="/imgs/home/scene3/sign.png" />
       </div>
       <div class="countries_container">
         <div id="countries">
           <div class="country">
-            <img src="/imgs/home/scene4/england.png" alt="" />
+            <img src="/imgs/home/scene3/england.png" alt="" />
           </div>
           <div class="country">
-            <img src="/imgs/home/scene4/thai.png" alt="" />
+            <img src="/imgs/home/scene3/thai.png" alt="" />
           </div>
           <div class="country china">
-            <img src="/imgs/home/scene4/china.png" alt="" />
+            <img src="/imgs/home/scene3/china.png" alt="" />
           </div>
         </div>
       </div>
+      <div class="bg">
+        <img class="bg7" src="/imgs/home/scene3/bg_07.svg" alt="" />
+        <img class="bg6" src="/imgs/home/scene3/bg_06.svg" alt="" />
+        <img class="bg5" src="/imgs/home/scene3/bg_05.svg" alt="" />
+        <img class="bg4" src="/imgs/home/scene3/bg_04.svg" alt="" />
+        <img class="bg3" src="/imgs/home/scene3/bg_03.svg" alt="" />
+        <img class="bg2" src="/imgs/home/scene3/bg_02.svg" alt="" />
+        <img class="bg1" src="/imgs/home/scene3/bg_01.svg" alt="" />
+      </div>
+
       <!-- <div id="bottom_1">
         <img src="/imgs/home/scene4/bottom.png" alt="" />
       </div> -->
@@ -67,7 +77,7 @@
 <script>
 import { TweenMax, TimelineMax } from 'gsap'
 
-var scene1, scene2, scene3, scene4, scene4_2
+var scene1, scene2, scene3, scene3_2, scene3_3
 
 export default {
   data() {
@@ -109,9 +119,9 @@ export default {
       )
       .addIndicators()
 
-    scene4 = this.$scrollmagic
+    scene3 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene4',
+        triggerElement: '#scene3',
         triggerHook: 0.5,
         duration: 300,
         offset: -120
@@ -122,20 +132,48 @@ export default {
         })
       )
       .addIndicators()
-    scene4_2 = this.$scrollmagic
+    scene3_2 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene4',
-        triggerHook: 0.5,
+        triggerElement: '#scene3',
+        triggerHook: 1,
         duration: 250,
-        offset: '400%'
+        offset: '800%'
+      })
+      .setTween(
+        TweenMax.from('.country', 1, {
+          scale: 0
+        })
+      )
+      .addIndicators()
+    scene3_3 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene3 .bg',
+        triggerHook: 0.5,
+        duration: 800,
+        offset: '-100%'
       })
       .setTween(
         new TimelineMax().add([
-          TweenMax.from('.country', 1, {
-            scale: 0
+          TweenMax.from('#scene3 .bg .bg7', 1, {
+            y: '50%'
           }),
-          TweenMax.from('#bottom_1', 1, {
-            y: '200%'
+          TweenMax.from('#scene3 .bg .bg6', 2, {
+            y: '80%'
+          }),
+          TweenMax.from('#scene3 .bg .bg5', 3, {
+            y: '100%'
+          }),
+          TweenMax.from('#scene3 .bg .bg4', 4, {
+            y: '250%'
+          }),
+          TweenMax.from('#scene3 .bg .bg3', 5, {
+            y: '380%'
+          }),
+          TweenMax.from('#scene3 .bg .bg2', 6, {
+            y: '800%'
+          }),
+          TweenMax.from('#scene3 .bg .bg1', 7, {
+            y: '1000%'
           })
         ])
       )
@@ -143,8 +181,9 @@ export default {
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
-    this.$scrollmagic.addScene(scene4)
-    this.$scrollmagic.addScene(scene4_2)
+    this.$scrollmagic.addScene(scene3)
+    this.$scrollmagic.addScene(scene3_2)
+    this.$scrollmagic.addScene(scene3_3)
 
     this.$scrollmagic.handleScrollTo = function(target) {
       TweenMax.to(window, 0.5, {
@@ -157,8 +196,9 @@ export default {
   beforeDestroy() {
     this.$scrollmagic.removeScene(scene1)
     this.$scrollmagic.removeScene(scene2)
-    this.$scrollmagic.removeScene(scene4)
-    this.$scrollmagic.removeScene(scene4_2)
+    this.$scrollmagic.removeScene(scene3)
+    this.$scrollmagic.removeScene(scene3_2)
+    this.$scrollmagic.removeScene(scene3_3)
   }
 }
 </script>
@@ -314,9 +354,9 @@ section {
 
 #scene3 {
   background-image: url('/imgs/home/scene3/bg.png');
-  background-size: 100% 150%;
+  // background-size: 100% 150%;
   width: 100%;
-  height: 120vh;
+  min-height: 120vh;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -340,7 +380,6 @@ section {
 
   #sign {
     max-width: 700px;
-    position: absolute;
     top: 0;
     width: 100%;
 
@@ -371,6 +410,51 @@ section {
       }
       img {
         width: 100%;
+      }
+    }
+  }
+
+  .bg {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      left: 0;
+
+      &.bg7 {
+        position: absolute;
+        bottom: 20%;
+      }
+
+      &.bg6 {
+        position: absolute;
+        bottom: 20%;
+      }
+
+      &.bg5 {
+        position: absolute;
+        bottom: 38%;
+      }
+
+      &.bg4 {
+        position: absolute;
+        bottom: 15%;
+      }
+
+      &.bg3 {
+        position: absolute;
+        bottom: 15%;
+      }
+      &.bg2 {
+        position: absolute;
+        bottom: 100px;
+      }
+      &.bg1 {
+        position: absolute;
+        bottom: 0;
       }
     }
   }
