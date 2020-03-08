@@ -35,11 +35,12 @@
       </div>
     </section>
     <section id="scene3">
+      <div class="sky">
+        <img src="/imgs/home/scene3/bg.png" />
+      </div>
       <div class="star"></div>
       <div class="cloud"></div>
-      <div class="top">
-        <!-- <img src="/imgs/home/scene2/top.png" /> -->
-      </div>
+      <div class="top"></div>
       <div id="sign">
         <img src="/imgs/home/scene3/sign.png" />
       </div>
@@ -68,14 +69,18 @@
       <div v-if="history" class="overlay" @click="closeHistory">
         <div class="card">History</div>
       </div>
-
-      <!-- <div id="bottom_1">
-        <img src="/imgs/home/scene4/bottom.png" alt="" />
-      </div> -->
     </section>
-    <!-- <section id="scene5">
-      <img src="/imgs/home/scene5/bg.png" atl="" />
-    </section> -->
+    <section id="scene4">
+      <div class="top">
+        <img src="/imgs/home/scene4/top_1.svg" />
+      </div>
+      <div class="center"></div>
+    </section>
+    <section id="scene5">
+      <div class="bg">
+        <img src="/imgs/home/scene5/bg.svg" />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -83,7 +88,7 @@
 import { commit } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 
-var scene1, scene2, scene3, scene3_2, scene3_3
+var scene1, scene2, scene3, scene3_2, scene3_3, scene4
 
 export default {
   data() {
@@ -185,20 +190,34 @@ export default {
         ])
       )
       .addIndicators()
+    scene4 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene4',
+        triggerHook: 1,
+        duration: 200,
+        offset: '-40%'
+      })
+      .setTween(
+        TweenMax.from('#scene4 .top', 1, {
+          y: '50%'
+        })
+      )
+      .addIndicators()
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
     this.$scrollmagic.addScene(scene3)
     this.$scrollmagic.addScene(scene3_2)
     this.$scrollmagic.addScene(scene3_3)
+    this.$scrollmagic.addScene(scene4)
 
-    this.$scrollmagic.handleScrollTo = function(target) {
-      TweenMax.to(window, 0.5, {
-        scrollTo: {
-          y: target
-        }
-      })
-    }
+    // this.$scrollmagic.handleScrollTo = function(target) {
+    //   TweenMax.to(window, 0, {
+    //     scrollTo: {
+    //       y: target
+    //     }
+    //   })
+    // }
   },
   beforeDestroy() {
     this.$scrollmagic.removeScene(scene1)
@@ -206,6 +225,7 @@ export default {
     this.$scrollmagic.removeScene(scene3)
     this.$scrollmagic.removeScene(scene3_2)
     this.$scrollmagic.removeScene(scene3_3)
+    this.$scrollmagic.removeScene(scene4)
   },
   methods: {
     openHistory() {
@@ -249,7 +269,6 @@ section {
     width: 100%;
     height: 100%;
     position: absolute;
-    display: none;
   }
 
   .cloud {
@@ -370,7 +389,6 @@ section {
 }
 
 #scene3 {
-  background-image: url('/imgs/home/scene3/bg.png');
   background-size: 100% 100%;
   width: 100%;
   min-height: 120vh;
@@ -380,6 +398,18 @@ section {
   align-items: center;
   position: relative;
   flex-wrap: wrap;
+
+  .sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160vh;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 
   .top {
     position: absolute;
@@ -510,12 +540,38 @@ section {
     background-color: #fff;
   }
 }
-#scene5 {
+
+#scene4 {
   width: 100%;
   height: auto;
+  margin-top: 65vh;
+  z-index: 10;
 
   img {
     width: 100%;
+  }
+
+  .top {
+    height: 120vh;
+    width: 100%;
+    overflow: visible;
+  }
+  .center {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+  }
+}
+
+#scene5 {
+  position: relative;
+  background-color: #493022;
+
+  .bg {
+    width: 100%;
+    height: 100vh;
+    top: -200%;
+    position: absolute;
   }
 }
 </style>
