@@ -35,6 +35,8 @@
       </div>
     </section>
     <section id="scene3">
+      <div class="star"></div>
+      <div class="cloud"></div>
       <div class="top">
         <!-- <img src="/imgs/home/scene2/top.png" /> -->
       </div>
@@ -43,13 +45,13 @@
       </div>
       <div class="countries_container">
         <div id="countries">
-          <div class="country">
+          <div class="country" @click="openHistory">
             <img src="/imgs/home/scene3/england.png" alt="" />
           </div>
-          <div class="country">
+          <div class="country" @click="openHistory">
             <img src="/imgs/home/scene3/thai.png" alt="" />
           </div>
-          <div class="country china">
+          <div class="country china" @click="openHistory">
             <img src="/imgs/home/scene3/china.png" alt="" />
           </div>
         </div>
@@ -63,6 +65,9 @@
         <img class="bg2" src="/imgs/home/scene3/bg_02.svg" alt="" />
         <img class="bg1" src="/imgs/home/scene3/bg_01.svg" alt="" />
       </div>
+      <div v-if="history" class="overlay" @click="closeHistory">
+        <div class="card">History</div>
+      </div>
 
       <!-- <div id="bottom_1">
         <img src="/imgs/home/scene4/bottom.png" alt="" />
@@ -75,6 +80,7 @@
 </template>
 
 <script>
+import { commit } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 
 var scene1, scene2, scene3, scene3_2, scene3_3
@@ -82,7 +88,8 @@ var scene1, scene2, scene3, scene3_2, scene3_3
 export default {
   data() {
     return {
-      fact: false
+      fact: false,
+      history: false
     }
   },
   mounted() {
@@ -199,6 +206,16 @@ export default {
     this.$scrollmagic.removeScene(scene3)
     this.$scrollmagic.removeScene(scene3_2)
     this.$scrollmagic.removeScene(scene3_3)
+  },
+  methods: {
+    openHistory() {
+      this.$store.commit('setScroll', false)
+      this.history = true
+    },
+    closeHistory() {
+      this.$store.commit('setScroll', true)
+      this.history = false
+    }
   }
 }
 </script>
@@ -354,7 +371,7 @@ section {
 
 #scene3 {
   background-image: url('/imgs/home/scene3/bg.png');
-  // background-size: 100% 150%;
+  background-size: 100% 100%;
   width: 100%;
   min-height: 120vh;
   text-align: center;
@@ -376,6 +393,20 @@ section {
     background-repeat: repeat-x;
     height: 100%;
     max-height: 200px;
+  }
+
+  .star {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('/imgs/home/scene3/star.png');
+  }
+
+  .cloud {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('/imgs/home/scene3/cloud.png');
   }
 
   #sign {
@@ -459,16 +490,24 @@ section {
     }
   }
 
-  #bottom_1 {
-    position: absolute;
-    width: 100%;
-    bottom: -60%;
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
     left: 0;
-    z-index: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+  }
 
-    img {
-      width: 100%;
-    }
+  .card {
+    max-width: 960px;
+    width: 100%;
+    height: 500px;
+    background-color: #fff;
   }
 }
 #scene5 {

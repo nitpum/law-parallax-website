@@ -4,6 +4,23 @@
   </div>
 </template>
 
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  head() {
+    return {
+      bodyAttrs: {
+        class: this.noscroll ? 'noscroll' : ''
+      }
+    }
+  },
+  computed: {
+    ...mapState(['noscroll'])
+  }
+}
+</script>
+
 <style>
 * {
   cursor: url('/imgs/cursor.png'), auto;
@@ -18,6 +35,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+.noscroll {
+  overflow: hidden;
 }
 
 *,
