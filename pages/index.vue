@@ -46,14 +46,20 @@
       </div>
       <div class="countries_container">
         <div id="countries">
-          <div class="country" @click="openHistory">
-            <img src="/imgs/home/scene3/england.png" alt="" />
+          <div class="country">
+            <nuxt-link to="england">
+              <img src="/imgs/home/scene3/england.png" alt="" />
+            </nuxt-link>
           </div>
-          <div class="country" @click="openHistory">
-            <img src="/imgs/home/scene3/thai.png" alt="" />
+          <div class="country">
+            <nuxt-link to="thai">
+              <img src="/imgs/home/scene3/thai.png" alt="" />
+            </nuxt-link>
           </div>
-          <div class="country china" @click="openHistory">
-            <img src="/imgs/home/scene3/china.png" alt="" />
+          <div class="country china">
+            <nuxt-link to="china">
+              <img src="/imgs/home/scene3/china.png" alt="" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -115,10 +121,76 @@
       </div>
     </section>
     <section id="scene5">
-      <div class="bg">
-        <img src="/imgs/home/scene5/bg.svg" />
+      <div class="heading">
+        <img src="/imgs/home/scene5/heading.png" alt="" />
+      </div>
+      <div class="list">
+        <div class="line-horizontal">
+          <div class="item" @click="openLawPopup('880')">
+            <img src="/imgs/home/scene5/880.png" alt="" />
+          </div>
+          <div class="item" @click="openLawPopup('881')">
+            <img src="/imgs/home/scene5/881.png" alt="" />
+          </div>
+          <div class="item" @click="openLawPopup('887_888')">
+            <img src="/imgs/home/scene5/887_888.png" alt="" />
+          </div>
+          <div class="line-vertical">
+            <div class="line"></div>
+            <div class="item" @click="openLawPopup('869')">
+              <img src="/imgs/home/scene5/869.png" alt="" />
+            </div>
+            <div class="item" @click="openLawPopup('877')">
+              <img src="/imgs/home/scene5/877.png" alt="" />
+            </div>
+            <div class="blank"></div>
+          </div>
+          <div class="item" @click="openLawPopup('870_871')">
+            <img src="/imgs/home/scene5/870_871.png" alt="" />
+          </div>
+          <div class="item" @click="openLawPopup('873_874')">
+            <img src="/imgs/home/scene5/873_874.png" alt="" />
+          </div>
+          <div class="item" @click="openLawPopup('879')">
+            <img src="/imgs/home/scene5/879.png" alt="" />
+          </div>
+        </div>
+        <div class="last">
+          <div class="item" @click="openLawPopup('872')">
+            <img src="/imgs/home/scene5/872.png" alt="" />
+          </div>
+          <div class="horizontal">
+            <div class="item" @click="openLawPopup('878')">
+              <img src="/imgs/home/scene5/878.png" alt="" />
+            </div>
+            <div class="item" @click="openLawPopup('882')">
+              <img src="/imgs/home/scene5/882.png" alt="" />
+            </div>
+          </div>
+          <div class="item" @click="openLawPopup('875_876')">
+            <img src="/imgs/home/scene5/875_876.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="overlay" :class="{ hide: !law }">
+        <div class="overlay-bg" @click="closeLawPopup" />
+        <div class="popup">
+          <div class="bg">
+            <img src="/imgs/home/scene5/popup_bg.png" alt="" />
+          </div>
+          <div class="close" @click="closeLawPopup">
+            <img src="/imgs/home/scene5/popup_close.png" />
+          </div>
+          <div class="heading">
+            <img :src="`/imgs/home/scene5/${law}_title.png`" alt="" />
+          </div>
+          <div class="body"></div>
+        </div>
       </div>
     </section>
+    <footer>
+      <img src="/imgs/home/footer.png" alt="" />
+    </footer>
   </div>
 </template>
 
@@ -126,13 +198,23 @@
 import { commit } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 
-var scene1, scene2, scene3, scene3_2, scene3_3, scene4, scene4_2, scene4_3
+var scene1,
+  scene2,
+  scene3,
+  scene3_2,
+  scene3_3,
+  scene4,
+  scene4_2,
+  scene4_3,
+  scene5,
+  scene5_2
 
 export default {
   data() {
     return {
       fact: false,
-      history: false
+      history: false,
+      law: 0
     }
   },
   mounted() {
@@ -253,6 +335,7 @@ export default {
           opacity: 0
         })
       )
+      .addIndicators()
     scene4_3 = this.$scrollmagic
       .scene({
         triggerElement: '#scene4 .heading',
@@ -264,6 +347,25 @@ export default {
           scale: 0
         })
       )
+      .addIndicators()
+    scene5 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene5 .heading',
+        triggerHook: 0.5,
+        duration: 300,
+        offset: '-50%'
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('#scene5 .heading', 1, {
+            opacity: 0
+          }),
+          TweenMax.from('#scene5 .list', 3, {
+            y: '100%'
+          })
+        ])
+      )
+      .addIndicators()
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
@@ -273,6 +375,7 @@ export default {
     this.$scrollmagic.addScene(scene4)
     this.$scrollmagic.addScene(scene4_2)
     this.$scrollmagic.addScene(scene4_3)
+    this.$scrollmagic.addScene(scene5)
 
     // this.$scrollmagic.handleScrollTo = function(target) {
     //   TweenMax.to(window, 0, {
@@ -291,6 +394,7 @@ export default {
     this.$scrollmagic.removeScene(scene4)
     this.$scrollmagic.removeScene(scene4_2)
     this.$scrollmagic.removeScene(scene4_3)
+    this.$scrollmagic.removeScene(scene5)
   },
   methods: {
     openHistory() {
@@ -300,6 +404,14 @@ export default {
     closeHistory() {
       this.$store.commit('setScroll', true)
       this.history = false
+    },
+    openLawPopup(id) {
+      this.law = 887
+      this.$store.commit('setScroll', false)
+    },
+    closeLawPopup() {
+      this.law = 0
+      this.$store.commit('setScroll', true)
     }
   }
 }
@@ -316,6 +428,29 @@ export default {
 section {
   width: 100%;
   height: 100vh;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+
+  .overlay-bg {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  &.hide {
+    display: none;
+  }
 }
 
 #scene1 {
@@ -708,12 +843,168 @@ section {
 #scene5 {
   position: relative;
   background-color: #493022;
+  height: 250vh;
+  padding-top: 40%;
+  box-sizing: border-box;
+  background: url('/imgs/home/scene5/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
 
-  .bg {
-    width: 100%;
-    height: 100vh;
-    top: -50%;
+  .heading {
+    justify-content: center;
+    text-align: center;
+    img {
+      margin: auto;
+      max-width: 700px;
+      width: 100%;
+    }
+  }
+  .list {
+    margin-top: 100px;
+  }
+
+  .line-horizontal {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    max-width: 1024px;
+    max-height: 420px;
+    margin: auto;
+
+    &:before {
+      bottom: 80px;
+      position: absolute;
+      content: '';
+      background-color: #ffffff;
+      width: 80%;
+      height: 5px;
+      // z-index: 0;
+    }
+  }
+
+  .line-vertical {
+    width: 140px;
+    min-height: 140px;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .line {
     position: absolute;
+    bottom: 80px;
+    left: 50%;
+    background-color: #ffffff;
+    width: 5px;
+    height: 300px;
+    z-index: 0;
+  }
+  .blank {
+    width: 140px;
+    height: 140px;
+  }
+
+  .item {
+    width: 140px;
+    height: 140px;
+    max-width: 140px;
+    max-height: 140px;
+    z-index: 10;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .last {
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    margin-top: 80px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 960px;
+  }
+
+  .overlay {
+    &:not(.hide) {
+      .popup {
+        transform: scale(1);
+        transition: all 0.5s ease 2s;
+      }
+    }
+  }
+
+  .popup {
+    position: relative;
+    transition: all 0.5s ease 2s;
+    transform: scale(0);
+
+    .bg {
+      img {
+        width: 100%;
+      }
+    }
+
+    .heading {
+      position: absolute;
+      top: 2%;
+      left: 12%;
+      width: 80%;
+      height: 30%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+
+    .close {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      img {
+        width: 100%;
+      }
+    }
+
+    .body {
+      position: absolute;
+      bottom: 5%;
+      left: 12%;
+      width: 80%;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+footer {
+  height: fit-content;
+  background-color: transparent;
+  img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
   }
 }
 </style>
