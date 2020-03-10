@@ -74,7 +74,45 @@
       <div class="top">
         <img src="/imgs/home/scene4/top_1.svg" />
       </div>
-      <div class="center"></div>
+      <div class="body">
+        <div class="heading">
+          <img src="/imgs/home/scene4/heading.png" />
+        </div>
+        <div class="list">
+          <div class="item">
+            <div class="front">
+              <img src="/imgs/home/scene4/item_01.png" alt="" />
+            </div>
+            <div class="back item-1">
+              <img src="/imgs/home/scene4/item_01_back.png" alt="" />
+            </div>
+          </div>
+          <div class="item">
+            <div class="front">
+              <img src="/imgs/home/scene4/item_02.png" alt="" />
+            </div>
+            <div class="back">
+              <img src="/imgs/home/scene4/item_02_back.png" alt="" />
+            </div>
+          </div>
+          <div class="item">
+            <div class="front">
+              <img src="/imgs/home/scene4/item_03.png" alt="" />
+            </div>
+            <div class="back item-3">
+              <img src="/imgs/home/scene4/item_03_back.png" alt="" />
+            </div>
+          </div>
+          <div class="item">
+            <div class="front">
+              <img src="/imgs/home/scene4/item_04.png" alt="" />
+            </div>
+            <div class="back item-4">
+              <img src="/imgs/home/scene4/item_04_back.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <section id="scene5">
       <div class="bg">
@@ -88,7 +126,7 @@
 import { commit } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 
-var scene1, scene2, scene3, scene3_2, scene3_3, scene4
+var scene1, scene2, scene3, scene3_2, scene3_3, scene4, scene4_2, scene4_3
 
 export default {
   data() {
@@ -203,6 +241,29 @@ export default {
         })
       )
       .addIndicators()
+    scene4_2 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene4',
+        triggerHook: 0.5,
+        duration: 200
+      })
+      .setTween(
+        TweenMax.from('#scene4 .heading', 1, {
+          y: '-200px',
+          opacity: 0
+        })
+      )
+    scene4_3 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene4 .heading',
+        triggerHook: 0.5,
+        duration: 200
+      })
+      .setTween(
+        TweenMax.from('#scene4 .item', 1, {
+          scale: 0
+        })
+      )
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
@@ -210,6 +271,8 @@ export default {
     this.$scrollmagic.addScene(scene3_2)
     this.$scrollmagic.addScene(scene3_3)
     this.$scrollmagic.addScene(scene4)
+    this.$scrollmagic.addScene(scene4_2)
+    this.$scrollmagic.addScene(scene4_3)
 
     // this.$scrollmagic.handleScrollTo = function(target) {
     //   TweenMax.to(window, 0, {
@@ -226,6 +289,8 @@ export default {
     this.$scrollmagic.removeScene(scene3_2)
     this.$scrollmagic.removeScene(scene3_3)
     this.$scrollmagic.removeScene(scene4)
+    this.$scrollmagic.removeScene(scene4_2)
+    this.$scrollmagic.removeScene(scene4_3)
   },
   methods: {
     openHistory() {
@@ -546,6 +611,7 @@ section {
   height: auto;
   margin-top: 65vh;
   z-index: 10;
+  position: relative;
 
   img {
     width: 100%;
@@ -555,11 +621,87 @@ section {
     height: 120vh;
     width: 100%;
     overflow: visible;
+    z-index: 9;
   }
-  .center {
+  .body {
     height: 100vh;
     width: 100%;
     position: absolute;
+    top: 30%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: row;
+    max-width: 1024px;
+    width: 100%;
+    margin: auto;
+
+    img {
+      max-width: 100%;
+    }
+
+    .item {
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+      position: relative;
+      max-width: 25%;
+      width: 100%;
+
+      &:hover {
+        z-index: 100;
+        .front {
+          transform: rotateY(180deg);
+        }
+        .back {
+          transform: rotateY(0deg);
+          top: 0;
+          width: 50vw;
+          max-width: 500px;
+          transition: transform 0.8s, width 0.4s ease 0.6s,
+            height 0.4s ease 0.6s, left 0.25s ease 0.6s;
+
+          &.item-1 {
+            left: 100%;
+          }
+          &.item-3 {
+            left: -100%;
+          }
+          &.item-4 {
+            left: -200%;
+          }
+        }
+      }
+
+      .front {
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+
+      .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotateY(180deg);
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        transition: transform 0.2s linear 0.2s, width 0.2s, height 0.2s,
+          left 0.4s;
+        transform-style: preserve-3d;
+      }
+    }
+  }
+
+  .heading {
+    max-width: 700px;
+    margin: auto;
   }
 }
 
@@ -570,7 +712,7 @@ section {
   .bg {
     width: 100%;
     height: 100vh;
-    top: -200%;
+    top: -50%;
     position: absolute;
   }
 }
