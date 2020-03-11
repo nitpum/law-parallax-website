@@ -185,6 +185,37 @@
             <img :src="`/imgs/home/scene5/${law}_title.png`" alt="" />
           </div>
           <div class="body"></div>
+          <div class="example">
+            <img src="/imgs/home/scene5/example_button.png" alt="" />
+          </div>
+          <div class="sound">
+            <img src="/imgs/home/scene5/sound_on.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="scene6">
+      <div class="contents">
+        <div class="comment_box">
+          <div class="heading">
+            <img src="/imgs/home/scene6/heading.png" alt="" />
+          </div>
+          <div class="textarea">
+            <div class="bg">
+              <img alt="" src="/imgs/home/scene6/input.png" />
+            </div>
+            <div class="input">
+              <textarea> </textarea>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sent">
+              <div class="bg">
+                <img src="/imgs/home/scene6/sent.png" alt="" />
+              </div>
+              <button></button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -843,8 +874,8 @@ section {
 #scene5 {
   position: relative;
   background-color: #493022;
-  height: 250vh;
-  padding-top: 40%;
+  height: 300vh;
+  padding-top: 60%;
   box-sizing: border-box;
   background: url('/imgs/home/scene5/bg.png');
   background-size: cover;
@@ -985,6 +1016,28 @@ section {
       }
     }
 
+    .example {
+      position: absolute;
+      width: 250px;
+      right: 50%;
+      bottom: 10%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .sound {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      right: 10%;
+      bottom: 12%;
+      img {
+        width: 100%;
+      }
+    }
+
     .body {
       position: absolute;
       bottom: 5%;
@@ -997,14 +1050,96 @@ section {
     }
   }
 }
+#scene6 {
+  background-color: #493022;
+  margin-top: -100vh;
+  margin-bottom: -60vh;
+  padding-top: 100vh;
+  padding-bottom: 60vh;
+  min-height: 220vh;
+
+  .contents {
+    max-width: 680px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .comment_box {
+    position: relative;
+
+    .heading {
+      max-width: 250px;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+
+    .textarea {
+      position: relative;
+
+      .bg {
+        width: 100%;
+        img {
+          width: 100%;
+          user-select: none;
+        }
+      }
+      .input {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+      }
+      textarea {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: transparent;
+      }
+    }
+
+    .bottom {
+      padding-top: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .sent {
+      max-width: 150px;
+      width: 100%;
+      position: relative;
+
+      .bg {
+        img {
+          width: 100%;
+        }
+      }
+
+      button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: transparent;
+      }
+    }
+  }
+}
 
 footer {
   height: fit-content;
   background-color: transparent;
+
   img {
     width: 100%;
     height: 100%;
     margin: 0;
+    margin-bottom: -20px;
   }
 }
 </style>
