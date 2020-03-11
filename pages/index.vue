@@ -10,6 +10,16 @@
         <img src="/imgs/home/scene2/top.png" />
       </div>
     </section>
+    <section id="scene2_2">
+      <div class="fact" @click="fact = !fact">
+        <div class="click">
+          <img src="/imgs/home/scene2/fact.png" />
+        </div>
+        <div class="detail" :class="{ display: fact }">
+          <img src="/imgs/home/scene2/fact_detail.png" />
+        </div>
+      </div>
+    </section>
     <section id="scene2">
       <div class="paper">
         <div id="paper_top">
@@ -23,14 +33,6 @@
             <img src="/imgs/home/scene2/paper_bottom.svg" />
           </div>
           <img class="paper-edge" src="/imgs/home/scene2/paper_top.svg" />
-        </div>
-      </div>
-    </section>
-    <section id="scene2_2">
-      <div class="fact" @click="fact = !fact">
-        <img src="/imgs/home/scene2/fact.png" />
-        <div class="detail" :class="{ display: fact }">
-          <img src="/imgs/home/scene2/fact_detail.png" />
         </div>
       </div>
     </section>
@@ -592,7 +594,7 @@ section {
 
 #scene2_2 {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   position: relative;
   background-color: #ffffff;
   z-index: 11;
@@ -600,20 +602,34 @@ section {
   .fact {
     position: absolute;
     right: 10%;
-    top: -100px;
+    top: 0px;
     cursor: pointer;
+
+    .click {
+      max-width: 150px;
+
+      img {
+        width: 100%;
+      }
+    }
 
     .detail {
       position: absolute;
-      left: -200%;
+      left: 0;
+      max-width: 800px;
       opacity: 0;
       transform: scale(0);
       transition: 0.5s all;
 
       &.display {
+        left: -500%;
         opacity: 1;
         transform: scale(1);
         transition: 0.5s all;
+      }
+
+      img {
+        width: 100%;
       }
     }
   }
