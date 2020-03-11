@@ -456,6 +456,7 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 section {
@@ -1155,7 +1156,6 @@ footer {
     width: 100%;
     height: 100%;
     margin: 0;
-    margin-bottom: -5%;
   }
 }
 </style>
