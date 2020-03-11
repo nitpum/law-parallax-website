@@ -300,9 +300,9 @@ export default {
     scene3_2 = this.$scrollmagic
       .scene({
         triggerElement: '#scene3',
-        triggerHook: 1,
-        duration: 250,
-        offset: '800%'
+        triggerHook: 0.5,
+        duration: '10%',
+        offset: '400%'
       })
       .setTween(
         TweenMax.from('.country', 1, {

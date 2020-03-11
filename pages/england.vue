@@ -34,6 +34,9 @@
       <div class="detail">
         <div class="content">
           <img src="/imgs/england/detail.png" alt="" />
+          <Button class="sound">
+            <img src="/imgs/england/sound_on.png" alt="" srcset="" />
+          </Button>
         </div>
         <nuxt-link to="/">
           <Button class="button">
@@ -77,6 +80,7 @@ export default {
           opacity: 0
         })
       )
+
     fire = this.$scrollmagic
       .scene({
         triggerElement: '#scene1',
@@ -89,7 +93,7 @@ export default {
           y: '-200%'
         })
       )
-      .addIndicators()
+
     burned_town = this.$scrollmagic
       .scene({
         triggerElement: '#scene1',
@@ -107,7 +111,6 @@ export default {
           })
         ])
       )
-      .addIndicators()
 
     burned_text = this.$scrollmagic
       .scene({
@@ -121,7 +124,6 @@ export default {
           opacity: 0
         })
       )
-      .addIndicators()
 
     burned_text2 = this.$scrollmagic
       .scene({
@@ -135,19 +137,18 @@ export default {
           opacity: 0
         })
       )
-      .addIndicators()
+
     detail = this.$scrollmagic
       .scene({
         triggerElement: '#scene2',
         triggerHook: 0.5,
-        duration: 300
+        duration: '40%'
       })
       .setTween(
         TweenMax.from('#scene2 .detail', 1, {
           y: '80vh'
         })
       )
-      .addIndicators()
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(title)
@@ -322,6 +323,7 @@ export default {
 
     .content {
       max-width: 960px;
+      position: relative;
 
       img {
         width: 100%;
@@ -333,5 +335,13 @@ export default {
 .button {
   margin-top: 50px;
   max-width: 350px;
+}
+
+.sound {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  bottom: 50px;
+  right: 50px;
 }
 </style>
