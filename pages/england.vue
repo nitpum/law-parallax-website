@@ -146,7 +146,8 @@ export default {
       })
       .setTween(
         TweenMax.from('#scene2 .detail', 1, {
-          y: '80vh'
+          y: '80vh',
+          opacity: 0
         })
       )
 
