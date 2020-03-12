@@ -1176,6 +1176,7 @@ section {
 
 footer {
   height: fit-content;
+  margin-bottom: -10px;
   background-color: transparent;
 
   img {
