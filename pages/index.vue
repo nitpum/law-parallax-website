@@ -1041,12 +1041,15 @@ section {
 
     .example {
       position: absolute;
-      width: 250px;
-      right: 50%;
+      width: 85%;
+      left: 10%;
       bottom: 10%;
+      display: flex;
+      justify-content: center;
 
       img {
         width: 100%;
+        max-width: 250px;
       }
     }
 
@@ -1063,10 +1066,10 @@ section {
 
     .body {
       position: absolute;
-      bottom: 5%;
-      left: 12%;
-      width: 80%;
-      height: 50%;
+      top: 40%;
+      left: 10%;
+      width: 85%;
+      height: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
