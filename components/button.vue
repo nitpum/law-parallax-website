@@ -3,7 +3,7 @@
     <div class="bg">
       <slot />
     </div>
-    <button />
+    <button @click="$emit('onClick')" />
   </div>
 </template>
 <script>
@@ -41,7 +41,8 @@ export default {
     width: 100%;
     height: 100%;
     background-color: transparent;
-    border: transparent;
+    border: 0px transparent;
+    outline: none;
   }
 }
 </style>

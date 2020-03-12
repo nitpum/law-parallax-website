@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Navbar />
     <section id="scene1">
       <div class="star"></div>
       <div class="cloud"></div>
@@ -230,6 +231,7 @@
 <script>
 import { commit } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
+import Navbar from '@/components/navbar'
 
 var scene1,
   scene2,
@@ -243,6 +245,9 @@ var scene1,
   scene5_2
 
 export default {
+  components: {
+    Navbar
+  },
   data() {
     return {
       fact: false,
