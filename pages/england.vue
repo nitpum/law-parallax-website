@@ -334,7 +334,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 10%;
+    padding-top: 5%;
 
     .content {
       max-width: 960px;
@@ -348,7 +348,7 @@ export default {
 }
 
 .button {
-  margin-top: 50px;
+  margin-top: 20px;
   max-width: 350px;
 }
 

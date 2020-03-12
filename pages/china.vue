@@ -270,7 +270,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 10%;
+    padding-top: 5%;
 
     .content {
       max-width: 960px;
