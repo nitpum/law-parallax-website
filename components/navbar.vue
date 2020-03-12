@@ -2,43 +2,45 @@
   <nav id="navbar">
     <div id="menu" :class="{ open: open }">
       <div class="wrapper">
-        <nuxt-link to="/">
-          <div>
+        <scrollactive :duration="800" bezier-easing-value=".5,0,.35,1">
+          <nuxt-link to="/">
+            <div>
+              <Button class="menu_item">
+                <img src="/imgs/navbar/button_home.png" alt="" srcset="" />
+              </Button>
+            </div>
+          </nuxt-link>
+          <a href="#scene2" class="scrollactive-item">
             <Button class="menu_item">
-              <img src="/imgs/navbar/button_home.png" alt="" srcset="" />
+              <img src="/imgs/navbar/button_meaning.png" alt="" srcset="" />
             </Button>
-          </div>
-        </nuxt-link>
-        <div>
-          <Button class="menu_item">
-            <img src="/imgs/navbar/button_meaning.png" alt="" srcset="" />
-          </Button>
-        </div>
-        <div>
-          <Button class="menu_item">
-            <img src="/imgs/navbar/button_history.png" alt="" srcset="" />
-          </Button>
-        </div>
-        <div>
-          <Button class="menu_item">
-            <img src="/imgs/navbar/button_category.png" alt="" srcset="" />
-          </Button>
-        </div>
-        <div>
-          <Button class="menu_item">
-            <img src="/imgs/navbar/button_structure.png" alt="" srcset="" />
-          </Button>
-        </div>
-        <div>
-          <Button class="menu_item">
-            <img src="/imgs/navbar/button_test.png" alt="" srcset="" />
-          </Button>
-        </div>
-        <div>
-          <Button class="menu_item">
-            <img src="/imgs/navbar/button_comment.png" alt="" srcset="" />
-          </Button>
-        </div>
+          </a>
+          <a href="#history" class="scrollactive-item">
+            <Button class="menu_item">
+              <img src="/imgs/navbar/button_history.png" alt="" srcset="" />
+            </Button>
+          </a>
+          <a href="#category" class="scrollactive-item">
+            <Button class="menu_item">
+              <img src="/imgs/navbar/button_category.png" alt="" srcset="" />
+            </Button>
+          </a>
+          <a href="#structure" class="scrollactive-item">
+            <Button class="menu_item">
+              <img src="/imgs/navbar/button_structure.png" alt="" srcset="" />
+            </Button>
+          </a>
+          <a href="#scene6" class="scrollactive-item">
+            <Button class="menu_item">
+              <img src="/imgs/navbar/button_test.png" alt="" srcset="" />
+            </Button>
+          </a>
+          <a href="#comment" class="scrollactive-item">
+            <Button class="menu_item">
+              <img src="/imgs/navbar/button_comment.png" alt="" srcset="" />
+            </Button>
+          </a>
+        </scrollactive>
       </div>
     </div>
     <div class="bg">
@@ -73,8 +75,16 @@ export default {
   },
   data() {
     return {
-      open: false
+      open: false,
+      topScreen: true,
+      lastScrollPosition: 0
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll)
   },
   computed: {
     navbarSrc() {
@@ -87,6 +97,13 @@ export default {
   methods: {
     toggle: function() {
       this.open = !this.open
+    },
+    onScroll() {
+      const currentScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop
+      this.lastScrollPosition = currentScrollPosition
+
+      this.topScreen = currentScrollPosition <= 0
     }
   }
 }
@@ -191,6 +208,7 @@ export default {
 
 .menu_item {
   width: 200px;
+  max-height: 50px;
   margin-bottom: 10px;
   transition: all 0.8s;
 }

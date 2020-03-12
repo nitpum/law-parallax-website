@@ -43,6 +43,7 @@
       </div>
       <div class="star"></div>
       <div class="cloud"></div>
+      <div id="history" style="position: absolute; top: 15%;"></div>
       <div class="top"></div>
       <div id="sign">
         <img src="/imgs/home/scene3/sign.png" />
@@ -84,7 +85,7 @@
         <img src="/imgs/home/scene4/top_1.svg" />
       </div>
       <div class="body">
-        <div class="heading">
+        <div id="category" class="heading">
           <img src="/imgs/home/scene4/heading.png" />
         </div>
         <div class="list">
@@ -124,7 +125,7 @@
       </div>
     </section>
     <section id="scene5">
-      <div class="heading">
+      <div id="structure" class="heading">
         <img src="/imgs/home/scene5/heading.png" alt="" />
       </div>
       <div class="list">
@@ -200,7 +201,7 @@
     <section id="scene6">
       <div class="contents">
         <div class="comment_box">
-          <div class="heading">
+          <div id="comment" class="heading">
             <img src="/imgs/home/scene6/heading.png" alt="" />
           </div>
           <div class="textarea">

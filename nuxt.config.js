@@ -30,7 +30,8 @@ export default {
   plugins: [
     {
       src: '~plugins/vue-scrollmagic.js'
-    }
+    },
+    '@/plugins/scrollactive'
   ],
   /*
    ** Nuxt.js dev-modules
