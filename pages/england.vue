@@ -53,7 +53,7 @@ import { commit } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 import Button from '@/components/button'
 
-var scene1, title, fire, burned_town, burned_text, burned_text2, detail
+var scene1, town, title, fire, burned_town, burned_text, burned_text2, detail
 
 export default {
   components: {
@@ -67,6 +67,18 @@ export default {
         duration: 2600
       })
       .setPin('#scene1')
+
+    town = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene1',
+        triggerHook: 0,
+        duration: 400
+      })
+      .setTween(
+        TweenMax.from('#town', 1, {
+          y: '30%'
+        })
+      )
 
     title = this.$scrollmagic
       .scene({
@@ -152,6 +164,7 @@ export default {
       )
 
     this.$scrollmagic.addScene(scene1)
+    this.$scrollmagic.addScene(town)
     this.$scrollmagic.addScene(title)
     this.$scrollmagic.addScene(fire)
     this.$scrollmagic.addScene(burned_town)
@@ -161,6 +174,7 @@ export default {
   },
   beforeDestroy() {
     this.$scrollmagic.removeScene(scene1)
+    this.$scrollmagic.removeScene(town)
     this.$scrollmagic.removeScene(title)
     this.$scrollmagic.removeScene(fire)
     this.$scrollmagic.removeScene(burned_town)
