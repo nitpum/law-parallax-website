@@ -284,7 +284,7 @@ export default {
 }
 
 .button {
-  margin-top: 50px;
+  margin-top: 20px;
   max-width: 350px;
 }
 
