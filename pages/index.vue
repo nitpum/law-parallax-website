@@ -243,7 +243,8 @@ var scene1,
   scene4_2,
   scene4_3,
   scene5,
-  scene5_2
+  scene5_2,
+  scene6
 
 export default {
   components: {
@@ -406,6 +407,20 @@ export default {
       )
       .addIndicators()
 
+    scene6 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene6',
+        triggerHook: 0.5,
+        duration: 200,
+        offset: '600%'
+      })
+      .setTween(
+        TweenMax.from('#scene6 .contents', 1, {
+          y: '50%'
+        })
+      )
+      .addIndicators()
+
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
     this.$scrollmagic.addScene(scene3)
@@ -415,6 +430,7 @@ export default {
     this.$scrollmagic.addScene(scene4_2)
     this.$scrollmagic.addScene(scene4_3)
     this.$scrollmagic.addScene(scene5)
+    this.$scrollmagic.addScene(scene6)
 
     // this.$scrollmagic.handleScrollTo = function(target) {
     //   TweenMax.to(window, 0, {
@@ -434,6 +450,7 @@ export default {
     this.$scrollmagic.removeScene(scene4_2)
     this.$scrollmagic.removeScene(scene4_3)
     this.$scrollmagic.removeScene(scene5)
+    this.$scrollmagic.removeScene(scene6)
   },
   methods: {
     openHistory() {
