@@ -31,9 +31,15 @@
     <section id="scene2">
       <div class="detail">
         <div class="content">
-          <img src="/imgs/england/detail.png" alt="" />
-          <Button class="sound">
-            <img src="/imgs/england/sound_on.png" alt="" srcset="" />
+          <img src="/imgs/china/detail.png" alt="" />
+          <Button class="sound" @onClick="playAudio">
+            <img
+              v-if="audioIsPlaying"
+              src="/imgs/sound_off.png"
+              alt=""
+              srcset=""
+            />
+            <img v-else src="/imgs/sound_on.png" alt="" srcset="" />
           </Button>
         </div>
         <nuxt-link to="/">
@@ -47,16 +53,22 @@
 </template>
 
 <script>
-import { commit } from 'vuex'
+import { commit, dispatch, mapGetters, mapState } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 import Button from '@/components/button'
 
-var scene1, title, ship1, ship2, ship3, fade, detail
+var scene1, title, ship1, ship2, ship3, fade, detail, audio
+
 export default {
   components: {
     Button
   },
+  computed: {
+    ...mapState(['audioIsPlaying'])
+  },
   mounted() {
+    this.$store.commit('setAudio', new Audio('/sounds/china.mp3'))
+
     scene1 = this.$scrollmagic
       .scene({
         triggerElement: '#scene1',
@@ -185,6 +197,11 @@ export default {
     this.$scrollmagic.removeScene(ship3)
     this.$scrollmagic.removeScene(fade)
     this.$scrollmagic.removeScene(detail)
+  },
+  methods: {
+    playAudio() {
+      this.$store.dispatch('toggleAudio')
+    }
   }
 }
 </script>
