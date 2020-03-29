@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   cursor: url('/imgs/cursor.png'), auto;
 }
@@ -74,5 +74,13 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+button {
+  &:hover,
+  &:focus {
+    transition: all 0.2s ease;
+    transform: scale(1.2);
+  }
 }
 </style>
