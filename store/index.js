@@ -17,7 +17,8 @@ export const mutations = {
 }
 
 export const actions = {
-  setAudio({ commit }, payload) {
+  setAudio({ state, commit }, payload) {
+    if (state.audio) state.audio.pasue()
     commit('setAudio', payload)
     commit('setAudioIsPlaying', false)
   },
