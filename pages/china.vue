@@ -12,7 +12,16 @@
           <img id="good" src="/imgs/china/ship_orange.png" alt="" srcset="" />
         </div>
         <div id="ship_blue">
-          <img src="/imgs/china/ship_blue.png" alt="" srcset="" />
+          <img id="ship" src="/imgs/china/ship_blue.png" alt="" srcset="" />
+          <img id="broken_ship" src="/imgs/china/broken_ship.png" alt="" />
+          <div class="relative">
+            <div id="text1" class="text">
+              <img src="/imgs/china/text1.png" alt="" />
+            </div>
+            <div id="text2" class="text">
+              <img src="/imgs/china/text2.png" alt="" />
+            </div>
+          </div>
         </div>
         <div id="bg_fade">
           <img src="/imgs/china/fade.png" alt="" srcset="" />
@@ -42,7 +51,7 @@ import { commit } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 import Button from '@/components/button'
 
-var scene1, title, ship1, ship2, fade, detail
+var scene1, title, ship1, ship2, ship3, fade, detail
 export default {
   components: {
     Button
@@ -52,7 +61,7 @@ export default {
       .scene({
         triggerElement: '#scene1',
         triggerHook: 0,
-        duration: '5000vh'
+        duration: '3000vh'
       })
       .setPin('#scene1')
       .addIndicators()
@@ -84,14 +93,14 @@ export default {
       .setTween(
         new TimelineMax().add([
           TweenMax.to('#ship_blue', 1, {
-            y: '20%',
+            y: '15%',
             left: '46%',
-            maxWidth: '20%'
+            maxWidth: '18%'
           }),
           TweenMax.to('#ship_orange', 1, {
-            y: '40%',
+            y: '15%',
             left: '42%',
-            maxWidth: '8%'
+            maxWidth: '6%'
           })
         ])
       )
@@ -101,21 +110,35 @@ export default {
       .scene({
         triggerElement: '#scene1',
         triggerHook: 0,
-        offset: '2350%',
-        duration: '200%'
+        offset: '1950%',
+        duration: '10%'
       })
       .setTween(
         new TimelineMax().add([
-          TweenMax.to('#ship_blue', 1, {
-            y: '30%',
-            left: '35%',
-            maxWidth: '30%',
+          TweenMax.to('#ship', 1, {
             opacity: 0
           }),
-          TweenMax.to('#ship_orange', 1, {
-            y: '2%',
-            left: '46%',
-            maxWidth: '20%'
+          TweenMax.to('#text1', 1, {
+            display: 'none'
+          })
+        ])
+      )
+      .addIndicators()
+
+    ship3 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene1',
+        triggerHook: 0,
+        offset: '1950%',
+        duration: '100%'
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('#broken_ship', 1, {
+            opacity: 0
+          }),
+          TweenMax.from('#text2', 1, {
+            display: 'none'
           })
         ])
       )
@@ -129,7 +152,7 @@ export default {
       })
       .setTween(
         TweenMax.from('#bg_fade', 1, {
-          y: '20%'
+          y: '30%'
         })
       )
 
@@ -150,6 +173,7 @@ export default {
     this.$scrollmagic.addScene(title)
     this.$scrollmagic.addScene(ship1)
     this.$scrollmagic.addScene(ship2)
+    this.$scrollmagic.addScene(ship3)
     this.$scrollmagic.addScene(fade)
     this.$scrollmagic.addScene(detail)
   },
@@ -158,6 +182,7 @@ export default {
     this.$scrollmagic.removeScene(title)
     this.$scrollmagic.removeScene(ship1)
     this.$scrollmagic.removeScene(ship2)
+    this.$scrollmagic.removeScene(ship3)
     this.$scrollmagic.removeScene(fade)
     this.$scrollmagic.removeScene(detail)
   }
@@ -240,6 +265,23 @@ export default {
 
   img {
     width: 100%;
+  }
+
+  div.ralative {
+    position: relative;
+  }
+
+  .text {
+    position: absolute;
+    top: 35%;
+    right: 0%;
+    width: 100%;
+    left: 100%;
+    z-index: 1000;
+  }
+
+  #broken_ship {
+    margin-top: -50%;
   }
 }
 
