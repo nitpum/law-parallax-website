@@ -8,6 +8,7 @@
 import { mapState } from 'vuex'
 
 export default {
+  middleware: 'default',
   head() {
     return {
       bodyAttrs: {
@@ -17,6 +18,9 @@ export default {
   },
   computed: {
     ...mapState(['noscroll'])
+  },
+  beforeMounted() {
+    this.$store.dispatch('setAudio', null)
   }
 }
 </script>
