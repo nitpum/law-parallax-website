@@ -57,7 +57,7 @@ import { commit, dispatch, mapGetters, mapState } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
 import Button from '@/components/button'
 
-var scene1, title, ship1, ship2, ship3, fade, detail, audio
+var scene1, title, ship1, ship2, ship3, fade, detail
 
 export default {
   components: {
