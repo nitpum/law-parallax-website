@@ -27,6 +27,11 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+  transition: all 0.2s ease;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 
   .bg {
     img {
