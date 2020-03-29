@@ -1,7 +1,8 @@
 export const state = () => ({
   noscroll: false,
   audio: null,
-  audioIsPlaying: false
+  audioIsPlaying: false,
+  bgm: null
 })
 
 export const mutations = {
@@ -13,6 +14,27 @@ export const mutations = {
   },
   setAudio(state, payload) {
     state.audio = payload
+  },
+  setBGM(state, payload) {
+    // stop current playing before set new one
+    if (state.bgm != payload) {
+      if (state.bgm) {
+        state.bgm.pause()
+      }
+    }
+    state.bgm = payload
+    state.bgm.volume = 0.1
+    state.bgm.loop = true
+
+    state.bgm.addEventListener(
+      'ended',
+      function() {
+        this.currentTime = 0
+        if (this.paused) this.play()
+      },
+      false
+    )
+    if (state.bgm.paused) state.bgm.play()
   }
 }
 

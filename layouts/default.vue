@@ -21,6 +21,11 @@ export default {
   },
   beforeMounted() {
     this.$store.dispatch('setAudio', null)
+  },
+  created() {
+    if (this.$store.state.bgm == null) {
+      this.$store.commit('setBGM', new Audio('/sounds/bg.mp3'))
+    }
   }
 }
 </script>
