@@ -198,31 +198,6 @@
         </div>
       </div>
     </section>
-    <section id="scene6">
-      <div class="contents">
-        <div class="comment_box">
-          <div id="comment" class="heading">
-            <img src="/imgs/home/scene6/heading.png" alt="" />
-          </div>
-          <div class="textarea">
-            <div class="bg">
-              <img alt="" src="/imgs/home/scene6/input.png" />
-            </div>
-            <div class="input">
-              <textarea> </textarea>
-            </div>
-          </div>
-          <div class="bottom">
-            <div class="sent">
-              <div class="bg">
-                <img src="/imgs/home/scene6/sent.png" alt="" />
-              </div>
-              <button></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <footer>
       <img src="/imgs/home/footer_text.png" alt="" />
     </footer>
@@ -243,8 +218,7 @@ var scene1,
   scene4_2,
   scene4_3,
   scene5,
-  scene5_2,
-  scene6
+  scene5_2
 
 export default {
   components: {
@@ -407,20 +381,6 @@ export default {
       )
       .addIndicators()
 
-    scene6 = this.$scrollmagic
-      .scene({
-        triggerElement: '#scene6',
-        triggerHook: 0.5,
-        duration: 200,
-        offset: '600%'
-      })
-      .setTween(
-        TweenMax.from('#scene6 .contents', 1, {
-          y: '50%'
-        })
-      )
-      .addIndicators()
-
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
     this.$scrollmagic.addScene(scene3)
@@ -430,7 +390,6 @@ export default {
     this.$scrollmagic.addScene(scene4_2)
     this.$scrollmagic.addScene(scene4_3)
     this.$scrollmagic.addScene(scene5)
-    this.$scrollmagic.addScene(scene6)
 
     // this.$scrollmagic.handleScrollTo = function(target) {
     //   TweenMax.to(window, 0, {
@@ -450,7 +409,6 @@ export default {
     this.$scrollmagic.removeScene(scene4_2)
     this.$scrollmagic.removeScene(scene4_3)
     this.$scrollmagic.removeScene(scene5)
-    this.$scrollmagic.removeScene(scene6)
   },
   methods: {
     openHistory() {
@@ -1093,92 +1051,12 @@ section {
     }
   }
 }
-#scene6 {
-  background-color: #493022;
-  margin-top: -100vh;
-  margin-bottom: -60vh;
-  padding-top: 100vh;
-  padding-bottom: 60vh;
-  min-height: 220vh;
-
-  .contents {
-    max-width: 680px;
-    width: 100%;
-    margin: auto;
-  }
-
-  .comment_box {
-    position: relative;
-
-    .heading {
-      max-width: 250px;
-      width: 100%;
-      img {
-        width: 100%;
-      }
-    }
-
-    .textarea {
-      position: relative;
-
-      .bg {
-        width: 100%;
-        img {
-          width: 100%;
-          user-select: none;
-        }
-      }
-      .input {
-        position: absolute;
-        width: 80%;
-        height: 80%;
-        top: 10%;
-        left: 10%;
-      }
-      textarea {
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        border: transparent;
-      }
-    }
-
-    .bottom {
-      padding-top: 30px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-    }
-
-    .sent {
-      max-width: 150px;
-      width: 100%;
-      position: relative;
-
-      .bg {
-        img {
-          width: 100%;
-        }
-      }
-
-      button {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        border: transparent;
-      }
-    }
-  }
-}
 
 footer {
   height: fit-content;
   padding-top: 100px;
   margin-bottom: -10px;
-  background-color: transparent;
+  background-color: #8b5531;
   background-image: url('/imgs/home/footer.png');
   background-size: 100% 100%;
 
