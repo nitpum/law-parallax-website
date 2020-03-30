@@ -13,11 +13,13 @@
     </section>
     <section id="scene2_2">
       <div class="fact" @click="fact = !fact">
-        <div class="click">
-          <img src="/imgs/home/scene2/fact.png" />
-        </div>
-        <div class="detail" :class="{ display: fact }">
-          <img src="/imgs/home/scene2/fact_detail.png" />
+        <div class="container">
+          <div class="click">
+            <img src="/imgs/home/scene2/fact.png" />
+          </div>
+          <div class="detail">
+            <img src="/imgs/home/scene2/fact_detail.png" />
+          </div>
         </div>
       </div>
     </section>
@@ -211,6 +213,7 @@ import Navbar from '@/components/navbar'
 
 var scene1,
   scene2,
+  scene2_2,
   scene3,
   scene3_2,
   scene3_3,
@@ -242,6 +245,28 @@ export default {
         TweenMax.to('#title', 1, {
           y: '150%'
         })
+      )
+      .addIndicators()
+
+    scene2_2 = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene2_2',
+        triggerHook: 0,
+        offset: '0%',
+        duration: 1000
+      })
+      .setPin('#scene2_2')
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.to('#scene2_2 .click', 1, {
+            scale: 0.3,
+            top: '-25%',
+            right: '-10%'
+          }),
+          TweenMax.from('#scene2_2 .detail', 1, {
+            scale: 0
+          })
+        ])
       )
       .addIndicators()
 
@@ -383,6 +408,7 @@ export default {
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
+    this.$scrollmagic.addScene(scene2_2)
     this.$scrollmagic.addScene(scene3)
     this.$scrollmagic.addScene(scene3_2)
     this.$scrollmagic.addScene(scene3_3)
@@ -402,6 +428,7 @@ export default {
   beforeDestroy() {
     this.$scrollmagic.removeScene(scene1)
     this.$scrollmagic.removeScene(scene2)
+    this.$scrollmagic.removeScene(scene2_2)
     this.$scrollmagic.removeScene(scene3)
     this.$scrollmagic.removeScene(scene3_2)
     this.$scrollmagic.removeScene(scene3_3)
@@ -576,19 +603,34 @@ section {
 
 #scene2_2 {
   width: 100%;
-  height: 60vh;
+  height: 100vh;
   position: relative;
   background-color: #ffffff;
   z-index: 11;
+  padding-top: 200px;
 
   .fact {
-    position: absolute;
-    right: 10%;
-    top: 0px;
+    position: relative;
+    width: 100%;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+      max-width: 960px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: top;
+      align-items: center;
+      overflow: visible;
+    }
 
     .click {
-      max-width: 150px;
+      position: absolute;
+      max-width: 300px;
+      width: 100%;
 
       img {
         width: 100%;
@@ -599,16 +641,7 @@ section {
       position: absolute;
       left: 0;
       max-width: 800px;
-      opacity: 0;
-      transform: scale(0);
-      transition: 0.5s all;
-
-      &.display {
-        left: -500%;
-        opacity: 1;
-        transform: scale(1);
-        transition: 0.5s all;
-      }
+      width: 100%;
 
       img {
         width: 100%;
