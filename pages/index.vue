@@ -224,7 +224,7 @@
       </div>
     </section>
     <footer>
-      <img src="/imgs/home/footer.png" alt="" />
+      <img src="/imgs/home/footer_text.png" alt="" />
     </footer>
   </div>
 </template>
@@ -1176,8 +1176,11 @@ section {
 
 footer {
   height: fit-content;
+  padding-top: 100px;
   margin-bottom: -10px;
   background-color: transparent;
+  background-image: url('/imgs/home/footer.png');
+  background-size: 100% 100%;
 
   img {
     width: 100%;
