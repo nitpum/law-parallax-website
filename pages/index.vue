@@ -25,17 +25,17 @@
     </section>
     <section id="scene2">
       <div class="paper">
-        <div id="paper_top">
-          <img class="paper-edge" src="/imgs/home/scene2/paper_top.svg" />
+        <div id="paper_cloud">
+          <img src="/imgs/home/scene2/paper_bottom.svg" />
+        </div>
+        <div id="paper_left">
+          <img class="paper-edge" src="/imgs/home/scene2/paper_side.svg" />
         </div>
         <div id="paper_body">
-          <img id="paper_text" src="/imgs/home/scene2/paper_text.png" />
+          <img id="paper_text" src="/imgs/home/scene2/paper_center.png" />
         </div>
-        <div id="paper_bottom">
-          <div id="paper_cloud">
-            <img src="/imgs/home/scene2/paper_bottom.svg" />
-          </div>
-          <img class="paper-edge" src="/imgs/home/scene2/paper_top.svg" />
+        <div id="paper_right">
+          <img class="paper-edge" src="/imgs/home/scene2/paper_side.svg" />
         </div>
       </div>
     </section>
@@ -280,11 +280,11 @@ export default {
       .setPin('#scene2')
       .setTween(
         new TimelineMax().add([
-          TweenMax.to('#paper_body', 1, {
-            height: '350px'
-          }),
-          TweenMax.to('#paper_text', 2, {
-            height: 'auto'
+          // TweenMax.to('#paper_left', 1, {
+          //   height: '350px'
+          // }),
+          TweenMax.from('#paper_body', 2, {
+            width: 0
           })
         ])
       )
@@ -551,50 +551,62 @@ section {
   z-index: 10;
   background-color: #ffffff;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+
   .paper {
     width: 100%;
-    max-width: 500px;
+    margin: auto;
+    max-width: 960px;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-    #paper_top {
+    #paper_left {
       z-index: 3;
-      margin-bottom: -10px;
-    }
-
-    #paper_body {
-      background-image: url('/imgs/home/scene2/paper_body.png');
-      background-size: 100% auto;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 70%;
-      margin: auto;
-      z-index: 2;
-      overflow: hidden;
-      padding: 0px 20px 0 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 0;
+      max-width: 100px;
+      width: 100%;
+      margin-right: -10px;
 
       img {
-        width: 95%;
-        height: 0;
-        z-index: 0;
+        width: 100%;
       }
     }
 
-    #paper_bottom {
-      margin-top: -15px;
+    #paper_right {
       z-index: 3;
       position: relative;
+      max-width: 100px;
+      width: 100%;
+      margin-left: -10px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    #paper_body {
+      max-width: 650px;
+      width: 100%;
+      height: 50vh;
+      z-index: 2;
+      overflow: hidden;
+      background-image: url('/imgs/home/scene2/paper_center_bg.png');
+
+      img {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
     }
 
     #paper_cloud {
       z-index: -10;
       position: absolute;
-      top: -7%;
+      bottom: -7%;
       left: 0;
       width: 100%;
     }
