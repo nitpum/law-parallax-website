@@ -869,7 +869,7 @@ section {
           transform: rotateY(0deg);
           top: 0;
           width: 50vw;
-          max-width: 500px;
+          max-width: 450px;
           transition: transform 0.8s, width 0.4s ease 0.6s,
             height 0.4s ease 0.6s, left 0.25s ease 0.6s;
 
