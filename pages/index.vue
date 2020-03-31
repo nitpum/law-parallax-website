@@ -138,7 +138,7 @@
           <div class="item" @click="openLawPopup('881')">
             <img src="/imgs/home/scene5/881.png" alt="" />
           </div>
-          <div class="item" @click="openLawPopup('887_888')">
+          <div class="item" @click="openLawPopup('887_888', 887, 888)">
             <img src="/imgs/home/scene5/887_888.png" alt="" />
           </div>
           <div class="line-vertical">
@@ -151,10 +151,10 @@
             </div>
             <div class="blank"></div>
           </div>
-          <div class="item" @click="openLawPopup('870_871')">
+          <div class="item" @click="openLawPopup('870_871', 870, 871)">
             <img src="/imgs/home/scene5/870_871.png" alt="" />
           </div>
-          <div class="item" @click="openLawPopup('873_874')">
+          <div class="item" @click="openLawPopup('873_874', 873, 874)">
             <img src="/imgs/home/scene5/873_874.png" alt="" />
           </div>
           <div class="item" @click="openLawPopup('879')">
@@ -173,7 +173,7 @@
               <img src="/imgs/home/scene5/882.png" alt="" />
             </div>
           </div>
-          <div class="item" @click="openLawPopup('875_876')">
+          <div class="item" @click="openLawPopup('875_876', 875, 876)">
             <img src="/imgs/home/scene5/875_876.png" alt="" />
           </div>
         </div>
@@ -185,18 +185,47 @@
             <img src="/imgs/home/scene5/popup_bg.png" alt="" />
           </div>
           <div class="close" @click="closeLawPopup">
-            <img src="/imgs/home/scene5/popup_close.png" />
+            <Button>
+              <img src="/imgs/home/scene5/popup_close.png" alt="" />
+            </Button>
           </div>
           <div class="heading">
             <img :src="`/imgs/home/scene5/${law}_title.png`" alt="" />
           </div>
-          <div class="body"></div>
-          <div class="example">
-            <img src="/imgs/home/scene5/example_button.png" alt="" />
+          <div v-if="law1 !== 0" class="option">
+            <Button @onClick="setCurrentLaw(law1)">
+              <img :src="`/imgs/home/scene5/${law1}_option.png`" alt="" />
+            </Button>
+            <Button @onClick="setCurrentLaw(law2)">
+              <img :src="`/imgs/home/scene5/${law2}_option.png`" alt="" />
+            </Button>
           </div>
-          <div class="sound">
-            <img src="/imgs/home/scene5/sound_on.png" alt="" />
+          <div class="body">
+            <img :src="`/imgs/home/scene5/${law}_detail.png`" alt="" />
+            <iframe
+              v-if="law !== 0"
+              width="100%"
+              height="450px"
+              :src="`https://www.youtube.com/embed/${videos[law]}`"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </div>
+          <!-- <div class="example">
+            <Button>
+              <img src="/imgs/home/scene5/example_button.png" alt="" />
+            </Button>
+          </div> -->
+          <Button class="sound" @onClick="playAudio">
+            <img
+              v-if="audioIsPlaying"
+              src="/imgs/home/scene5/sound_off.png"
+              alt=""
+              srcset=""
+            />
+            <img v-else src="/imgs/home/scene5/sound_on.png" alt="" srcset="" />
+          </Button>
         </div>
       </div>
     </section>
@@ -207,8 +236,9 @@
 </template>
 
 <script>
-import { commit } from 'vuex'
+import { commit, mapState } from 'vuex'
 import { TweenMax, TimelineMax } from 'gsap'
+import Button from '@/components/button'
 import Navbar from '@/components/navbar'
 
 var scene1,
@@ -225,13 +255,37 @@ var scene1,
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    Button
+  },
+  computed: {
+    ...mapState(['audioIsPlaying'])
   },
   data() {
     return {
       fact: false,
       history: false,
-      law: 0
+      law: 0,
+      law1: 0,
+      law2: 0,
+      videos: {
+        869: 'n_ZbpgrAT3E',
+        870: 'DNB7TS_6qNk',
+        871: 'Kgi-WzaPApA',
+        872: 'Zyf-MKyVfxw',
+        873: '0YAf1_AK40c',
+        874: 'YZq0rxdB_IM',
+        875: 'TMkXFrfPVlo',
+        876: 'iMV0cr-duEU',
+        877: 'LPRJmdTcNqY',
+        878: 'roGf9LTR6EM',
+        879: '-_BuPLUcI70',
+        880: '9Vkwlqs01sI',
+        881: 'nyMhmCMKqOU',
+        882: '-2DN2qO60-0',
+        887: '0dSt2rdagW4',
+        888: 'HLUfkgkTvtI'
+      }
     }
   },
   mounted() {
@@ -438,6 +492,13 @@ export default {
     this.$scrollmagic.removeScene(scene5)
   },
   methods: {
+    playAudio() {
+      this.$store.dispatch('toggleAudio')
+    },
+    setCurrentLaw(id) {
+      this.law = id
+      this.$store.dispatch('setAudio', new Audio(`/sounds/law/${id}.mp3`))
+    },
     openHistory() {
       this.$store.commit('setScroll', false)
       this.history = true
@@ -446,12 +507,21 @@ export default {
       this.$store.commit('setScroll', true)
       this.history = false
     },
-    openLawPopup(id) {
-      this.law = 887
+    openLawPopup(id, option1, option2) {
+      if (option1) {
+        this.law1 = option1
+        this.law2 = option2
+        this.setCurrentLaw(option1)
+      } else {
+        this.law1 = 0
+        this.law2 = 0
+        this.setCurrentLaw(id)
+      }
       this.$store.commit('setScroll', false)
     },
     closeLawPopup() {
-      this.law = 0
+      this.setCurrentLaw(0)
+      this.$store.dispatch('removeAudio')
       this.$store.commit('setScroll', true)
     }
   }
@@ -1061,11 +1131,12 @@ section {
 
     .example {
       position: absolute;
-      width: 85%;
-      left: 10%;
+      width: 40%;
+      left: 32%;
       bottom: 10%;
       display: flex;
       justify-content: center;
+      text-align: center;
 
       img {
         width: 100%;
@@ -1078,21 +1149,36 @@ section {
       width: 40px;
       height: 40px;
       right: 10%;
-      bottom: 12%;
+      top: 15%;
+      // bottom: 12%; // for old position
       img {
         width: 100%;
       }
     }
 
+    .option {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      left: 3%;
+      width: 97%;
+      bottom: 58%;
+    }
+
     .body {
       position: absolute;
-      top: 40%;
+      top: 42%;
       left: 10%;
       width: 85%;
-      height: 30%;
-      display: flex;
+      // height: 33%;
+      height: 50%;
       justify-content: center;
       align-items: center;
+      overflow-y: auto;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }
