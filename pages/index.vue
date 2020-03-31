@@ -54,17 +54,23 @@
         <div id="countries">
           <div class="country">
             <nuxt-link to="england">
-              <img src="/imgs/home/scene3/england.png" alt="" />
+              <Button>
+                <img src="/imgs/home/scene3/england.png" alt="" />
+              </Button>
             </nuxt-link>
           </div>
           <div class="country">
             <nuxt-link to="thai">
-              <img src="/imgs/home/scene3/thai.png" alt="" />
+              <Button>
+                <img src="/imgs/home/scene3/thai.png" alt="" />
+              </Button>
             </nuxt-link>
           </div>
           <div class="country china">
             <nuxt-link to="china">
-              <img src="/imgs/home/scene3/china.png" alt="" />
+              <Button>
+                <img src="/imgs/home/scene3/china.png" alt="" />
+              </Button>
             </nuxt-link>
           </div>
         </div>
