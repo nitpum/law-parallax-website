@@ -30,7 +30,9 @@
               <img src="/imgs/navbar/button_structure.png" alt="" srcset="" />
             </Button>
           </a>
-          <a href="#scene6" class="scrollactive-item">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeBQuK4rTer0Oklx51ys1g8HRNubrhlQw9I2nOgndQgizFLGQ/viewform"
+          >
             <Button class="menu_item">
               <img src="/imgs/navbar/button_test.png" alt="" srcset="" />
             </Button>
