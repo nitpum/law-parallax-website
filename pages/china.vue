@@ -76,7 +76,7 @@ export default {
         duration: '3000vh'
       })
       .setPin('#scene1')
-      .addIndicators()
+    // .addIndicators()
 
     title = this.$scrollmagic
       .scene({
@@ -116,7 +116,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     ship2 = this.$scrollmagic
       .scene({
@@ -135,7 +135,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     ship3 = this.$scrollmagic
       .scene({
@@ -154,7 +154,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     fade = this.$scrollmagic
       .scene({

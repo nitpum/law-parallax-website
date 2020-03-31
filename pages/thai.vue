@@ -180,7 +180,7 @@ export default {
           y: '100%'
         })
       )
-      .addIndicators()
+    // .addIndicators()
 
     age4 = this.$scrollmagic
       .scene({
@@ -194,7 +194,7 @@ export default {
           y: '-100%'
         })
       )
-      .addIndicators()
+    // .addIndicators()
 
     age4_1 = this.$scrollmagic
       .scene({
@@ -213,7 +213,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age4_2 = this.$scrollmagic
       .scene({
@@ -229,7 +229,7 @@ export default {
           // })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age4_3 = this.$scrollmagic
       .scene({
@@ -245,7 +245,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
     age4_4 = this.$scrollmagic
       .scene({
         triggerElement: '#scene1',
@@ -260,7 +260,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age4_5 = this.$scrollmagic
       .scene({
@@ -276,7 +276,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age5 = this.$scrollmagic
       .scene({
@@ -292,7 +292,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age5_scroll = this.$scrollmagic
       .scene({
@@ -308,7 +308,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age5_1 = this.$scrollmagic
       .scene({
@@ -327,7 +327,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age5_2 = this.$scrollmagic
       .scene({
@@ -346,7 +346,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
     age5_3 = this.$scrollmagic
       .scene({
         triggerElement: '#scene1',
@@ -364,7 +364,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age7 = this.$scrollmagic
       .scene({
@@ -380,7 +380,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
     age7_5 = this.$scrollmagic
       .scene({
         triggerElement: '#sceen1',
@@ -395,7 +395,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age7_1 = this.$scrollmagic
       .scene({
@@ -414,7 +414,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age7_2 = this.$scrollmagic
       .scene({
@@ -430,7 +430,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age7_3 = this.$scrollmagic
       .scene({
@@ -446,7 +446,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     age7_4 = this.$scrollmagic
       .scene({
@@ -462,7 +462,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     scene2 = this.$scrollmagic
       .scene({
@@ -478,7 +478,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(age)
