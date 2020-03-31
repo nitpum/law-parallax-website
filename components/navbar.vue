@@ -37,11 +37,11 @@
               <img src="/imgs/navbar/button_test.png" alt="" srcset="" />
             </Button>
           </a>
-          <a href="#comment" class="scrollactive-item">
+          <!-- <a href="#comment" class="scrollactive-item">
             <Button class="menu_item">
               <img src="/imgs/navbar/button_comment.png" alt="" srcset="" />
             </Button>
-          </a>
+          </a> -->
         </scrollactive>
       </div>
     </div>

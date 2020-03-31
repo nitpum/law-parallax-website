@@ -131,51 +131,80 @@
         <img src="/imgs/home/scene5/heading.png" alt="" />
       </div>
       <div class="list">
-        <div class="line-horizontal">
-          <div class="item" @click="openLawPopup('880')">
+        <div class="line-horizontal" style="margin-bottom: -200px">
+          <Button class="item law-other" @onClick="openLawPopup('880')">
             <img src="/imgs/home/scene5/880.png" alt="" />
-          </div>
-          <div class="item" @click="openLawPopup('881')">
-            <img src="/imgs/home/scene5/881.png" alt="" />
-          </div>
-          <div class="item" @click="openLawPopup('887_888', 887, 888)">
-            <img src="/imgs/home/scene5/887_888.png" alt="" />
-          </div>
-          <div class="line-vertical">
-            <div class="line"></div>
-            <div class="item" @click="openLawPopup('869')">
-              <img src="/imgs/home/scene5/869.png" alt="" />
-            </div>
-            <div class="item" @click="openLawPopup('877')">
-              <img src="/imgs/home/scene5/877.png" alt="" />
-            </div>
-            <div class="blank"></div>
-          </div>
-          <div class="item" @click="openLawPopup('870_871', 870, 871)">
+          </Button>
+          <Button
+            class="item law-other"
+            @onClick="openLawPopup('870_871', 870, 871)"
+          >
             <img src="/imgs/home/scene5/870_871.png" alt="" />
-          </div>
-          <div class="item" @click="openLawPopup('873_874', 873, 874)">
-            <img src="/imgs/home/scene5/873_874.png" alt="" />
-          </div>
-          <div class="item" @click="openLawPopup('879')">
-            <img src="/imgs/home/scene5/879.png" alt="" />
-          </div>
+          </Button>
         </div>
-        <div class="last">
-          <div class="item" @click="openLawPopup('872')">
-            <img src="/imgs/home/scene5/872.png" alt="" />
-          </div>
-          <div class="horizontal">
-            <div class="item" @click="openLawPopup('878')">
-              <img src="/imgs/home/scene5/878.png" alt="" />
+        <div class="line-horizontal" style="margin-bottom: -50px;">
+          <Button class="item law-other" @onClick="openLawPopup('881')">
+            <img src="/imgs/home/scene5/881.png" alt="" />
+          </Button>
+          <div class="line-vertical" style="margin-bottom: 100px;">
+            <div class="item">
+              <Button id="law-869" @onClick="openLawPopup('869')">
+                <img src="/imgs/home/scene5/869.png" alt="" />
+              </Button>
+              <div class="arrow_down">
+                <img src="/imgs/home/scene5/arrow_down.png" alt="" />
+              </div>
             </div>
-            <div class="item" @click="openLawPopup('882')">
-              <img src="/imgs/home/scene5/882.png" alt="" />
+            <div class="blank" style="height: 50px"></div>
+            <div class="item">
+              <div class="arrow_all">
+                <img src="/imgs/home/scene5/arrow_body.png" alt="" />
+              </div>
+              <Button id="law-877" @onClick="openLawPopup('877')">
+                <img src="/imgs/home/scene5/877.png" alt="" />
+              </Button>
             </div>
           </div>
-          <div class="item" @click="openLawPopup('875_876', 875, 876)">
-            <img src="/imgs/home/scene5/875_876.png" alt="" />
+          <Button class="item law-other" @onClick="openLawPopup('879')">
+            <img src="/imgs/home/scene5/879.png" alt="" />
+          </Button>
+        </div>
+        <div class="line-horizontal">
+          <Button
+            class="item law-other"
+            @onClick="openLawPopup('887_888', 887, 888)"
+          >
+            <img src="/imgs/home/scene5/887_888.png" alt="" />
+          </Button>
+
+          <div class="last" style="margin-bottom: -100px">
+            <div class="horizontal">
+              <Button class="item law-other" @onClick="openLawPopup('872')">
+                <img src="/imgs/home/scene5/872.png" alt="" />
+              </Button>
+              <Button
+                class="item law-other"
+                @onClick="openLawPopup('875_876', 875, 876)"
+              >
+                <img src="/imgs/home/scene5/875_876.png" alt="" />
+              </Button>
+            </div>
+            <div class="horizontal">
+              <Button class="item law-other" @onClick="openLawPopup('882')">
+                <img src="/imgs/home/scene5/882.png" alt="" />
+              </Button>
+              <Button class="item law-other" @onClick="openLawPopup('878')">
+                <img src="/imgs/home/scene5/878.png" alt="" />
+              </Button>
+            </div>
           </div>
+
+          <Button
+            class="item law-other"
+            @onClick="openLawPopup('873_874', 873, 874)"
+          >
+            <img src="/imgs/home/scene5/873_874.png" alt="" />
+          </Button>
         </div>
       </div>
       <div class="overlay" :class="{ hide: !law }">
@@ -251,7 +280,11 @@ var scene1,
   scene4_2,
   scene4_3,
   scene5,
-  scene5_2
+  scene5_1,
+  scene5_2,
+  scene5_3,
+  scene5_4,
+  scene5_5
 
 export default {
   components: {
@@ -300,7 +333,7 @@ export default {
           y: '150%'
         })
       )
-      .addIndicators()
+    // .addIndicators()
 
     scene2_2 = this.$scrollmagic
       .scene({
@@ -322,7 +355,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     scene2 = this.$scrollmagic
       .scene({
@@ -342,7 +375,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     scene3 = this.$scrollmagic
       .scene({
@@ -356,7 +389,8 @@ export default {
           y: -500
         })
       )
-      .addIndicators()
+    // .addIndicators()
+
     scene3_2 = this.$scrollmagic
       .scene({
         triggerElement: '#scene3',
@@ -369,7 +403,8 @@ export default {
           scale: 0
         })
       )
-      .addIndicators()
+    // .addIndicators()
+
     scene3_3 = this.$scrollmagic
       .scene({
         triggerElement: '#scene3 .bg',
@@ -402,7 +437,8 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
+
     scene4 = this.$scrollmagic
       .scene({
         triggerElement: '#scene4',
@@ -415,7 +451,8 @@ export default {
           y: '50%'
         })
       )
-      .addIndicators()
+    // .addIndicators()
+
     scene4_2 = this.$scrollmagic
       .scene({
         triggerElement: '#scene4',
@@ -428,7 +465,8 @@ export default {
           opacity: 0
         })
       )
-      .addIndicators()
+    // .addIndicators()
+
     scene4_3 = this.$scrollmagic
       .scene({
         triggerElement: '#scene4 .heading',
@@ -440,7 +478,8 @@ export default {
           scale: 0
         })
       )
-      .addIndicators()
+    // .addIndicators()
+
     scene5 = this.$scrollmagic
       .scene({
         triggerElement: '#scene5 .heading',
@@ -452,13 +491,87 @@ export default {
         new TimelineMax().add([
           TweenMax.from('#scene5 .heading', 1, {
             opacity: 0
-          }),
-          TweenMax.from('#scene5 .list', 3, {
-            y: '100%'
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
+
+    scene5_1 = this.$scrollmagic
+      .scene({
+        triggerElement: '#law-869 ',
+        triggerHook: 0.5,
+        duration: 100
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('#law-869', 1, {
+            opacity: 0
+          })
+        ])
+      )
+    // .addIndicators()
+
+    scene5_2 = this.$scrollmagic
+      .scene({
+        triggerElement: '.item .arrow_down',
+        triggerHook: 0.5,
+        duration: 100
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('.item .arrow_down', 1, {
+            opacity: 0
+          })
+        ])
+      )
+    // .addIndicators()
+
+    scene5_3 = this.$scrollmagic
+      .scene({
+        triggerElement: '#law-877',
+        triggerHook: 0.5,
+        duration: 100
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('#law-877', 1, {
+            opacity: 0
+          })
+        ])
+      )
+    // .addIndicators()
+
+    scene5_4 = this.$scrollmagic
+      .scene({
+        triggerElement: '#law-877',
+        triggerHook: 0.5,
+        duration: 50,
+        offset: 50
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('.item .arrow_all', 5, {
+            opacity: 0
+          })
+        ])
+      )
+    // .addIndicators()
+
+    scene5_5 = this.$scrollmagic
+      .scene({
+        triggerElement: '#law-877',
+        triggerHook: 0.5,
+        duration: 50,
+        offset: 100
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('.item.law-other', 10, {
+            opacity: 0
+          })
+        ])
+      )
+    // .addIndicators()
 
     this.$scrollmagic.addScene(scene1)
     this.$scrollmagic.addScene(scene2)
@@ -470,6 +583,11 @@ export default {
     this.$scrollmagic.addScene(scene4_2)
     this.$scrollmagic.addScene(scene4_3)
     this.$scrollmagic.addScene(scene5)
+    this.$scrollmagic.addScene(scene5_1)
+    this.$scrollmagic.addScene(scene5_2)
+    this.$scrollmagic.addScene(scene5_3)
+    this.$scrollmagic.addScene(scene5_4)
+    this.$scrollmagic.addScene(scene5_5)
 
     // this.$scrollmagic.handleScrollTo = function(target) {
     //   TweenMax.to(window, 0, {
@@ -490,6 +608,11 @@ export default {
     this.$scrollmagic.removeScene(scene4_2)
     this.$scrollmagic.removeScene(scene4_3)
     this.$scrollmagic.removeScene(scene5)
+    this.$scrollmagic.removeScene(scene5_1)
+    this.$scrollmagic.removeScene(scene5_2)
+    this.$scrollmagic.removeScene(scene5_3)
+    this.$scrollmagic.removeScene(scene5_4)
+    this.$scrollmagic.removeScene(scene5_5)
   },
   methods: {
     playAudio() {
@@ -1006,6 +1129,9 @@ section {
   }
   .list {
     margin-top: 100px;
+    max-width: 960px;
+    padding-top: 200px;
+    margin: auto;
   }
 
   .line-horizontal {
@@ -1013,21 +1139,11 @@ section {
     overflow: visible;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-end;
     max-width: 1024px;
     max-height: 420px;
     margin: auto;
-
-    &:before {
-      bottom: 80px;
-      position: absolute;
-      content: '';
-      background-color: #ffffff;
-      width: 80%;
-      height: 5px;
-      // z-index: 0;
-    }
   }
 
   .line-vertical {
@@ -1059,14 +1175,30 @@ section {
     max-width: 140px;
     max-height: 140px;
     z-index: 10;
+    position: relative;
 
     img {
       width: 100%;
     }
+
+    .arrow_down {
+      position: absolute;
+      width: 30px;
+      left: 40%;
+      bottom: -40%;
+    }
+
+    .arrow_all {
+      position: absolute;
+      width: 40vw;
+      max-width: 900px;
+      left: -16vw;
+      top: -25%;
+    }
   }
 
   .last {
-    max-width: 960px;
+    max-width: 300px;
     width: 100%;
     margin: auto;
     margin-top: 80px;
@@ -1074,6 +1206,10 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .horizontal {
+      width: 100%;
+    }
   }
 
   .horizontal {
