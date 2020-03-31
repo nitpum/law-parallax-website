@@ -609,7 +609,7 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 5%;
+    padding-top: 2%;
 
     .content {
       max-width: 800px;
