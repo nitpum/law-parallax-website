@@ -44,11 +44,13 @@
             <img v-else src="/imgs/sound_on.png" alt="" srcset="" />
           </Button>
         </div>
-        <nuxt-link to="/">
+        <!-- <nuxt-link to="/#history"> -->
+        <a href="/#history">
           <Button class="button">
             <img src="/imgs/england/back.png" alt="" />
           </Button>
-        </nuxt-link>
+        </a>
+        <!-- </nuxt-link> -->
       </div>
     </section>
   </div>

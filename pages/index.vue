@@ -602,6 +602,24 @@ export default {
     //     }
     //   })
     // }
+    // console.log('mounted')
+    this.$nextTick(function() {
+      // Code that will run only after the
+      // entire view has been rendered
+      // console.log(window.location.hash)
+      if (this.$route.hash) {
+        // console.log('scroll')
+
+        const el = document.querySelector(this.$route.hash)
+        const scrollY = el.getBoundingClientRect().top
+        // console.log(el)
+        // console.log(scrollY)
+        setTimeout(() => {
+          // console.log('scroll')
+          window.scrollTo({ top: scrollY, behavior: 'smooth' })
+        }, 100)
+      }
+    })
   },
   beforeDestroy() {
     this.$scrollmagic.removeScene(scene1)

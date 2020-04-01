@@ -113,11 +113,13 @@
             <img v-else src="/imgs/sound_on.png" alt="" srcset="" />
           </Button>
         </div>
-        <nuxt-link to="/">
+        <!-- <nuxt-l to="/#history"> -->
+        <a href="/#history">
           <Button class="button">
             <img src="/imgs/thai/back.png" alt="" />
           </Button>
-        </nuxt-link>
+        </a>
+        <!-- </nuxt-l> -->
       </div>
     </section>
   </div>
@@ -165,7 +167,7 @@ export default {
           y: '-85%'
         })
       )
-      .addIndicators()
+    // .addIndicators()
 
     age4_1 = this.$scrollmagic
       .scene({
@@ -368,7 +370,6 @@ export default {
     this.$scrollmagic.addScene(age4_2)
     this.$scrollmagic.addScene(age4_3)
     this.$scrollmagic.addScene(age4_4)
-    this.$scrollmagic.addScene(age4_5)
     this.$scrollmagic.addScene(age5_1)
     this.$scrollmagic.addScene(age5_2)
     this.$scrollmagic.addScene(age5_3)
@@ -384,7 +385,6 @@ export default {
     this.$scrollmagic.removeScene(age4_2)
     this.$scrollmagic.removeScene(age4_3)
     this.$scrollmagic.removeScene(age4_4)
-    this.$scrollmagic.removeScene(age4_5)
     this.$scrollmagic.removeScene(age5_1)
     this.$scrollmagic.removeScene(age5_2)
     this.$scrollmagic.removeScene(age5_3)
