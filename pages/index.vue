@@ -791,9 +791,12 @@ section {
       max-width: 650px;
       width: 100%;
       height: 50vh;
+      max-height: 390px;
       z-index: 2;
       overflow: hidden;
       background-image: url('/imgs/home/scene2/paper_center_bg.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
 
       img {
         width: 100%;
