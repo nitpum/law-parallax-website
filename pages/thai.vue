@@ -129,25 +129,18 @@ import { TweenMax, TimelineMax } from 'gsap'
 import Button from '@/components/button'
 
 var scene1,
-  age,
-  age4,
   age4_1,
   age4_2,
   age4_3,
   age4_4,
   age4_5,
-  age5,
-  age5_scroll,
   age5_1,
   age5_2,
   age5_3,
-  age5_4,
-  age7,
   age7_1,
   age7_2,
   age7_3,
   age7_4,
-  age7_5,
   scene2
 
 export default {
@@ -164,43 +157,20 @@ export default {
       .scene({
         triggerElement: '#scene1',
         triggerHook: 0,
-        duration: 3700
+        duration: 3300
       })
       .setPin('#scene1')
-
-    age = this.$scrollmagic
-      .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0,
-        offset: '100px',
-        duration: 1000
-      })
       .setTween(
-        TweenMax.from('.history', 1, {
-          y: '100%'
+        TweenMax.to('.history', 1, {
+          y: '-85%'
         })
       )
-    // .addIndicators()
-
-    age4 = this.$scrollmagic
-      .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0,
-        offset: '1100px',
-        duration: 1000
-      })
-      .setTween(
-        TweenMax.to('#age4', 1, {
-          y: '-100%'
-        })
-      )
-    // .addIndicators()
+      .addIndicators()
 
     age4_1 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age4 .header',
         triggerHook: 0,
-        offset: '1100px',
         duration: 200
       })
       .setTween(
@@ -217,25 +187,9 @@ export default {
 
     age4_2 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0.5,
-        offset: '1300px',
-        duration: 200
-      })
-      .setTween(
-        new TimelineMax().add([
-          // TweenMax.from('#age4 .node.node-1', 1, {
-          //   opacity: 0
-          // })
-        ])
-      )
-    // .addIndicators()
-
-    age4_3 = this.$scrollmagic
-      .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0.5,
-        offset: '1600px',
+        triggerElement: '#age4 .node-1',
+        triggerHook: 0,
+        offset: -100,
         duration: 200
       })
       .setTween(
@@ -246,11 +200,12 @@ export default {
         ])
       )
     // .addIndicators()
-    age4_4 = this.$scrollmagic
+
+    age4_3 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0.5,
-        offset: '1700px',
+        triggerElement: '#age4 .node-2',
+        triggerHook: 0,
+        offset: -100,
         duration: 200
       })
       .setTween(
@@ -262,11 +217,11 @@ export default {
       )
     // .addIndicators()
 
-    age4_5 = this.$scrollmagic
+    age4_4 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0.5,
-        offset: '1900px',
+        triggerElement: '#age4 .node-3',
+        triggerHook: 0,
+        offset: -100,
         duration: 200
       })
       .setTween(
@@ -278,43 +233,10 @@ export default {
       )
     // .addIndicators()
 
-    age5 = this.$scrollmagic
-      .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0,
-        offset: '1100px',
-        duration: 1000
-      })
-      .setTween(
-        new TimelineMax().add([
-          TweenMax.to('#age5', 1, {
-            y: '-130%'
-          })
-        ])
-      )
-    // .addIndicators()
-
-    age5_scroll = this.$scrollmagic
-      .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0,
-        offset: '2100px',
-        duration: 1000
-      })
-      .setTween(
-        new TimelineMax().add([
-          TweenMax.to('#age5', 1, {
-            y: '-230%'
-          })
-        ])
-      )
-    // .addIndicators()
-
     age5_1 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age5 .header',
         triggerHook: 0,
-        offset: '2100px',
         duration: 300
       })
       .setTween(
@@ -327,71 +249,34 @@ export default {
           })
         ])
       )
-    // .addIndicators()
+    // // .addIndicators()
 
     age5_2 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age5 .node-1',
         triggerHook: 0,
-        offset: '2300px',
+        offset: -100,
         duration: 300
       })
       .setTween(
         new TimelineMax().add([
           TweenMax.to('#age5 .node-1', 1, {
             opacity: 0
-          }),
-          TweenMax.to('#age7', 1, {
-            y: '-160%'
           })
         ])
       )
     // .addIndicators()
     age5_3 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age5 .node-2',
         triggerHook: 0,
-        offset: '2550px',
+        offset: -100,
         duration: 300
       })
       .setTween(
         new TimelineMax().add([
           TweenMax.to('#age5 .node-2', 1, {
             opacity: 0
-          }),
-          TweenMax.to('#age7', 1, {
-            y: '-175%'
-          })
-        ])
-      )
-    // .addIndicators()
-
-    age7 = this.$scrollmagic
-      .scene({
-        triggerElement: '#scene1',
-        triggerHook: 0,
-        offset: '2850px',
-        duration: 1000
-      })
-      .setTween(
-        new TimelineMax().add([
-          TweenMax.to('#age7', 1, {
-            y: '-290%'
-          })
-        ])
-      )
-    // .addIndicators()
-    age7_5 = this.$scrollmagic
-      .scene({
-        triggerElement: '#sceen1',
-        triggerHook: 1,
-        offset: '2500px',
-        duration: 1050
-      })
-      .setTween(
-        new TimelineMax().add([
-          TweenMax.to('.timeline', 1, {
-            y: '-100%'
           })
         ])
       )
@@ -399,9 +284,8 @@ export default {
 
     age7_1 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age7 .header',
         triggerHook: 0,
-        offset: '2850px',
         duration: 300
       })
       .setTween(
@@ -414,13 +298,13 @@ export default {
           })
         ])
       )
-    // .addIndicators()
+    // // .addIndicators()
 
     age7_2 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age7 .node-1',
         triggerHook: 0,
-        offset: '3000px',
+        offset: -100,
         duration: 300
       })
       .setTween(
@@ -430,13 +314,12 @@ export default {
           })
         ])
       )
-    // .addIndicators()
+    // // .addIndicators()
 
     age7_3 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age7 .node-2',
         triggerHook: 0,
-        offset: '3100px',
         duration: 300
       })
       .setTween(
@@ -446,13 +329,13 @@ export default {
           })
         ])
       )
-    // .addIndicators()
+    // // .addIndicators()
 
     age7_4 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene1',
+        triggerElement: '#age7 .node-3',
         triggerHook: 0,
-        offset: '3200px',
+        offset: -100,
         duration: 300
       })
       .setTween(
@@ -481,46 +364,34 @@ export default {
     // .addIndicators()
 
     this.$scrollmagic.addScene(scene1)
-    this.$scrollmagic.addScene(age)
-    this.$scrollmagic.addScene(age4)
     this.$scrollmagic.addScene(age4_1)
     this.$scrollmagic.addScene(age4_2)
     this.$scrollmagic.addScene(age4_3)
     this.$scrollmagic.addScene(age4_4)
     this.$scrollmagic.addScene(age4_5)
-    this.$scrollmagic.addScene(age5)
-    this.$scrollmagic.addScene(age5_scroll)
     this.$scrollmagic.addScene(age5_1)
     this.$scrollmagic.addScene(age5_2)
     this.$scrollmagic.addScene(age5_3)
-    this.$scrollmagic.addScene(age7)
     this.$scrollmagic.addScene(age7_1)
     this.$scrollmagic.addScene(age7_2)
     this.$scrollmagic.addScene(age7_3)
     this.$scrollmagic.addScene(age7_4)
-    this.$scrollmagic.addScene(age7_5)
     this.$scrollmagic.addScene(scene2)
   },
   beforeDestroy() {
     this.$scrollmagic.removeScene(scene1)
-    this.$scrollmagic.removeScene(age)
-    this.$scrollmagic.removeScene(age4)
     this.$scrollmagic.removeScene(age4_1)
     this.$scrollmagic.removeScene(age4_2)
     this.$scrollmagic.removeScene(age4_3)
     this.$scrollmagic.removeScene(age4_4)
     this.$scrollmagic.removeScene(age4_5)
-    this.$scrollmagic.removeScene(age5)
-    this.$scrollmagic.removeScene(age5_scroll)
     this.$scrollmagic.removeScene(age5_1)
     this.$scrollmagic.removeScene(age5_2)
     this.$scrollmagic.removeScene(age5_3)
-    this.$scrollmagic.removeScene(age7)
     this.$scrollmagic.removeScene(age7_1)
     this.$scrollmagic.removeScene(age7_2)
     this.$scrollmagic.removeScene(age7_3)
     this.$scrollmagic.removeScene(age7_4)
-    this.$scrollmagic.removeScene(age7_5)
     this.$scrollmagic.removeScene(scene2)
   },
   methods: {
@@ -637,6 +508,7 @@ section {
 
 .history {
   position: relative;
+  padding-top: 100vh;
 }
 
 .timeline {
@@ -644,7 +516,7 @@ section {
   left: 49.9%;
   width: 1px;
   border-left: 5px dashed #fff;
-  height: 100%;
+  height: 80%;
   z-index: 0;
 }
 
