@@ -23,6 +23,7 @@ export const mutations = {
       }
     }
     state.bgm = payload
+    state.bgm.muted = true
     state.bgm.volume = 0.1
     state.bgm.loop = true
 
@@ -34,7 +35,24 @@ export const mutations = {
       },
       false
     )
-    if (state.bgm.paused) state.bgm.play()
+    if (state.bgm.paused) {
+      state.bgm.muted = false
+      const playPromise = state.bgm.play()
+      if (playPromise !== undefined) {
+        playPromise
+          .then(function() {
+            state.bgm.muted = false
+            state.bgm.play()
+          })
+          .catch(function(error) {
+            // Automatic playback failed.
+            // Show a UI element to let the user manually start playback.
+            // location.reload()
+            state.bgm.muted = false
+            state.bgm.play()
+          })
+      }
+    }
   }
 }
 
