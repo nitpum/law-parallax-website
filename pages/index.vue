@@ -1196,9 +1196,10 @@ section {
 
     .arrow_all {
       position: absolute;
-      width: 40vw;
-      max-width: 900px;
-      left: -16vw;
+      width: 600px;
+      max-width: 600px;
+      left: 50%;
+      margin-left: -300px;
       top: -25%;
     }
   }
