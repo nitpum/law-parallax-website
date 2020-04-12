@@ -237,7 +237,8 @@ export default {
     height: 100%;
     top: 100px;
     position: absolute;
-    background: url('/imgs/china/cloud.png');
+    background: url('/imgs/china/cloud.svg');
+    background-size: 50%;
     background-position: top;
     background-repeat: repeat-x;
   }

@@ -459,7 +459,8 @@ section {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: url('/imgs/thai/cloud.png');
+    background: url('/imgs/thai/cloud.svg');
+    background-size: 100% 100%;
     background-position: top;
     background-repeat: repeat-x;
   }
