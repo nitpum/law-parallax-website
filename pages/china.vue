@@ -347,7 +347,7 @@ export default {
 
 .button {
   margin-top: 20px;
-  max-width: 350px;
+  max-width: 250px;
 }
 
 .sound {

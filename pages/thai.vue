@@ -496,7 +496,7 @@ section {
 
 .button {
   margin-top: 0px;
-  max-width: 350px;
+  max-width: 250px;
 }
 
 .sound {
