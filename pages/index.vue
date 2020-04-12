@@ -153,7 +153,7 @@
             <img src="/imgs/home/scene5/881.png" alt="" />
           </Button>
           <div class="line-vertical" style="margin-bottom: 100px;">
-            <div class="item">
+            <div class="item" style="margin-bottom: 30px;">
               <Button id="law-869" @onClick="openLawPopup('869')">
                 <img src="/imgs/home/scene5/869.png" alt="" />
               </Button>
@@ -1205,6 +1205,14 @@ section {
     height: 140px;
   }
 
+  .button {
+    .bg {
+      img {
+        max-width: 120px;
+        max-height: 120px;
+      }
+    }
+  }
   .item {
     width: 140px;
     height: 140px;
@@ -1220,16 +1228,16 @@ section {
     .arrow_down {
       position: absolute;
       width: 30px;
-      left: 40%;
+      left: 28%;
       bottom: -40%;
     }
 
     .arrow_all {
       position: absolute;
-      width: 600px;
-      max-width: 600px;
+      width: 650px;
+      max-width: 650px;
       left: 50%;
-      margin-left: -300px;
+      margin-left: -330px;
       top: -25%;
     }
   }
