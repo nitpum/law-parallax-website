@@ -50,7 +50,16 @@
       <div id="sign">
         <img src="/imgs/home/scene3/sign.png" />
       </div>
+
       <div class="countries_container">
+        <div class="guide">
+          <div class="text">
+            <img src="/imgs/home/scene3/guide_text.png" alt="" />
+          </div>
+          <div class="chevron_down bounce">
+            <img src="/imgs/home/scene3/chevron_down.png" alt="" />
+          </div>
+        </div>
         <div id="countries">
           <div class="country">
             <nuxt-link to="england">
@@ -135,6 +144,12 @@
     <section id="scene5">
       <div id="structure" class="heading">
         <img src="/imgs/home/scene5/heading.png" alt="" />
+      </div>
+      <div class="guide">
+        <img src="/imgs/home/scene5/guide_text.png" alt="" />
+        <div class="chevron_down bounce">
+          <img src="/imgs/home/scene5/chevron_down.png" alt="" />
+        </div>
       </div>
       <div class="list">
         <div class="line-horizontal" style="margin-bottom: -200px">
@@ -282,6 +297,8 @@ var scene1,
   scene3,
   scene3_2,
   scene3_3,
+  scene3_guide_in,
+  scene3_guide_out,
   scene4,
   scene4_2,
   scene4_3,
@@ -290,7 +307,9 @@ var scene1,
   scene5_2,
   scene5_3,
   scene5_4,
-  scene5_5
+  scene5_5,
+  scene5_guide_in,
+  scene5_guide_out
 
 export default {
   components: {
@@ -397,6 +416,33 @@ export default {
       )
     // .addIndicators()
 
+    scene3_guide_in = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene3 .guide',
+        triggerHook: 1,
+        duration: 200,
+        offset: '200px'
+      })
+      .setTween(
+        TweenMax.from('#scene3 .guide', 1, {
+          opacity: 0
+        })
+      )
+
+
+    scene3_guide_out = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene3 .guide',
+        triggerHook: 0,
+        duration: 200,
+        offset: '-100px'
+      })
+      .setTween(
+        TweenMax.to('#scene3 .guide', 1, {
+          opacity: 0
+        })
+      )
+
     scene3_2 = this.$scrollmagic
       .scene({
         triggerElement: '#scene3',
@@ -413,10 +459,10 @@ export default {
 
     scene3_3 = this.$scrollmagic
       .scene({
-        triggerElement: '#scene3 .bg',
-        triggerHook: 0.5,
+        triggerElement: '#countries',
+        triggerHook: 1,
         duration: 800,
-        offset: '-100%'
+        offset: '400px'
       })
       .setTween(
         new TimelineMax().add([
@@ -443,7 +489,7 @@ export default {
           })
         ])
       )
-    // .addIndicators()
+    .addIndicators()
 
     scene4 = this.$scrollmagic
       .scene({
@@ -489,13 +535,43 @@ export default {
     scene5 = this.$scrollmagic
       .scene({
         triggerElement: '#scene5 .heading',
-        triggerHook: 0.5,
+        triggerHook: 1,
         duration: 300,
-        offset: '-50%'
+        offset: '200px'
       })
       .setTween(
         new TimelineMax().add([
           TweenMax.from('#scene5 .heading', 1, {
+            opacity: 0
+          })
+        ])
+      )
+
+    scene5_guide_in = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene5 .guide',
+        triggerHook: 1,
+        duration: 200,
+        offset: '200px'
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.from('#scene5 .guide', 1, {
+            opacity: 0
+          })
+        ])
+      )
+
+    scene5_guide_out = this.$scrollmagic
+      .scene({
+        triggerElement: '#scene5 .guide',
+        triggerHook: 0,
+        duration: 200,
+        offset: '-100px'
+      })
+      .setTween(
+        new TimelineMax().add([
+          TweenMax.to('#scene5 .guide', 1, {
             opacity: 0
           })
         ])
@@ -585,6 +661,8 @@ export default {
     this.$scrollmagic.addScene(scene3)
     this.$scrollmagic.addScene(scene3_2)
     this.$scrollmagic.addScene(scene3_3)
+    this.$scrollmagic.addScene(scene3_guide_in)
+    this.$scrollmagic.addScene(scene3_guide_out)
     this.$scrollmagic.addScene(scene4)
     this.$scrollmagic.addScene(scene4_2)
     this.$scrollmagic.addScene(scene4_3)
@@ -594,6 +672,8 @@ export default {
     this.$scrollmagic.addScene(scene5_3)
     this.$scrollmagic.addScene(scene5_4)
     this.$scrollmagic.addScene(scene5_5)
+    this.$scrollmagic.addScene(scene5_guide_in)
+    this.$scrollmagic.addScene(scene5_guide_out)
 
     // this.$scrollmagic.handleScrollTo = function(target) {
     //   TweenMax.to(window, 0, {
@@ -628,6 +708,8 @@ export default {
     this.$scrollmagic.removeScene(scene3)
     this.$scrollmagic.removeScene(scene3_2)
     this.$scrollmagic.removeScene(scene3_3)
+    this.$scrollmagic.removeScene(scene3_guide_in)
+    this.$scrollmagic.removeScene(scene3_guide_out)
     this.$scrollmagic.removeScene(scene4)
     this.$scrollmagic.removeScene(scene4_2)
     this.$scrollmagic.removeScene(scene4_3)
@@ -637,6 +719,8 @@ export default {
     this.$scrollmagic.removeScene(scene5_3)
     this.$scrollmagic.removeScene(scene5_4)
     this.$scrollmagic.removeScene(scene5_5)
+    this.$scrollmagic.removeScene(scene5_guide_in)
+    this.$scrollmagic.removeScene(scene5_guide_out)
   },
   methods: {
     playAudio() {
@@ -943,9 +1027,34 @@ section {
     }
   }
 
+  .guide {
+    margin-top: 50px;
+    margin-bottom: -50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 200px;
+    width: 100%;
+    position: relative;
+
+    img {
+      max-width: 100%;
+    }
+
+    .text {
+      margin: auto;
+      max-width: 100%;
+    }
+
+    .chevron_down {
+      margin: auto;
+      max-width: 10%;
+    }
+  }
+
   .countries_container {
     width: 100%;
-    display: flex;
+    display: block;
   }
   #countries {
     display: flex;
@@ -955,6 +1064,7 @@ section {
     align-items: center;
     max-width: 1024px;
     width: 100%;
+    margin-top: 80px;
 
     .country {
       max-width: 200px;
@@ -1163,11 +1273,40 @@ section {
       width: 100%;
     }
   }
+
+  .guide {
+    margin-top: 50px;
+    margin-bottom: -50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 200px;
+    width: 100%;
+
+    img {
+      max-width: 100%;
+    }
+
+    .chevron_down {
+      margin: auto;
+      max-width: 10%;
+    }
+  }
+
   .list {
     margin-top: 100px;
     max-width: 960px;
     padding-top: 200px;
     margin: auto;
+
+    .button {
+      .bg {
+        img {
+          max-width: 120px;
+          max-height: 120px;
+        }
+      }
+    }
   }
 
   .line-horizontal {
@@ -1205,14 +1344,6 @@ section {
     height: 140px;
   }
 
-  .button {
-    .bg {
-      img {
-        max-width: 120px;
-        max-height: 120px;
-      }
-    }
-  }
   .item {
     width: 140px;
     height: 140px;
@@ -1376,6 +1507,28 @@ footer {
     width: 100%;
     height: 100%;
     margin: 0;
+  }
+}
+
+.bounce {
+  animation: bounce 3s infinite;
+}
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-6px);
   }
 }
 </style>
