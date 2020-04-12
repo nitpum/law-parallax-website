@@ -21,28 +21,6 @@ export default {
   },
   beforeMounted() {
     this.$store.dispatch('setAudio', null)
-  },
-  mounted() {
-    var vue = this
-    document.addEventListener('click', function() {
-      if (vue.$store.state.bgm.paused) {
-        vue.$store.commit('setBGM', new Audio('/sounds/bg.mp3'))
-      }
-    })
-    document.addEventListener('mouseover', function() {
-      if (vue.$store.state.bgm.paused) {
-        vue.$store.commit('setBGM', new Audio('/sounds/bg.mp3'))
-      }
-    })
-    document.addEventListener('scroll', function() {
-      if (vue.$store.state.bgm.paused) {
-        vue.$store.commit('setBGM', new Audio('/sounds/bg.mp3'))
-      }
-    })
-
-    if (this.$store.state.bgm == null) {
-      this.$store.commit('setBGM', new Audio('/sounds/bg.mp3'))
-    }
   }
 }
 </script>
