@@ -1038,7 +1038,7 @@ section {
 #scene4 {
   width: 100%;
   height: auto;
-  margin-top: 65vh;
+  margin-top: 50vh;
   z-index: 10;
   position: relative;
 
@@ -1047,10 +1047,18 @@ section {
   }
 
   .top {
-    height: 120vh;
+    margin-top: -20vh;
+    height: 100vh;
     width: 100%;
     overflow: visible;
     z-index: 9;
+    object-fit: contain;
+
+    img {
+      top: 0;
+      width: 100% !important;
+      transform: scaleX(1) scaleY(0.6);
+    }
   }
   .body {
     height: 100vh;
@@ -1137,13 +1145,14 @@ section {
 #scene5 {
   position: relative;
   background-color: #493022;
-  height: 300vh;
-  padding-top: 60%;
+  height: 220vh;
+  padding-top: 40%;
   box-sizing: border-box;
   background: url('/imgs/home/scene5/bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: bottom;
+  margin-bottom: -2px;
 
   .heading {
     justify-content: center;
