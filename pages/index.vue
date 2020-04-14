@@ -429,7 +429,6 @@ export default {
         })
       )
 
-
     scene3_guide_out = this.$scrollmagic
       .scene({
         triggerElement: '#scene3 .guide',
@@ -489,7 +488,7 @@ export default {
           })
         ])
       )
-    .addIndicators()
+      .addIndicators()
 
     scene4 = this.$scrollmagic
       .scene({
@@ -1208,8 +1207,8 @@ section {
           top: 0;
           width: 50vw;
           max-width: 450px;
-          transition: transform 0.8s, width 0.4s ease 0.6s,
-            height 0.4s ease 0.6s, left 0.25s ease 0.6s;
+          transition: transform 0.2s, width 0.2s ease 0.2s,
+            height 0.2s ease 0.2s, left 0.2s ease 0.2s;
 
           &.item-1 {
             left: 100%;
@@ -1226,7 +1225,7 @@ section {
       .front {
         -webkit-backface-visibility: hidden; /* Safari */
         backface-visibility: hidden;
-        transition: transform 0.8s;
+        transition: transform 0.2s;
         transform-style: preserve-3d;
       }
 
@@ -1240,7 +1239,7 @@ section {
         -webkit-backface-visibility: hidden; /* Safari */
         backface-visibility: hidden;
         transition: transform 0.2s linear 0.2s, width 0.2s, height 0.2s,
-          left 0.4s;
+          left 0.2s;
         transform-style: preserve-3d;
       }
     }
