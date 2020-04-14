@@ -516,7 +516,7 @@ export default {
           })
         ])
       )
-      .addIndicators()
+    // .addIndicators()
 
     scene4 = this.$scrollmagic
       .scene({
