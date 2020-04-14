@@ -241,41 +241,69 @@
           </div>
           <div class="heading">
             <img :src="`/imgs/home/scene5/${law}_title.png`" alt="" />
+            <Button class="sound" @onClick="playAudio">
+              <img
+                v-if="audioIsPlaying"
+                src="/imgs/home/scene5/sound_off.png"
+                alt=""
+                srcset=""
+              />
+              <img
+                v-else
+                src="/imgs/home/scene5/sound_on.png"
+                alt=""
+                srcset=""
+              />
+            </Button>
           </div>
           <div v-if="law1 !== 0" class="option">
-            <Button @onClick="setCurrentLaw(law1)">
-              <img :src="`/imgs/home/scene5/${law1}_option.png`" alt="" />
+            <Button @onClick="setCurrentLaw(law1)" :noAnimation="true">
+              <img
+                v-if="law === law1"
+                :src="`/imgs/home/scene5/${law1}_option_active.png`"
+                alt=""
+              />
+              <img
+                v-else
+                :src="`/imgs/home/scene5/${law1}_option.png`"
+                alt=""
+              />
             </Button>
-            <Button @onClick="setCurrentLaw(law2)">
-              <img :src="`/imgs/home/scene5/${law2}_option.png`" alt="" />
+            <Button @onClick="setCurrentLaw(law2)" :noAnimation="true">
+              <img
+                v-if="law === law2"
+                :src="`/imgs/home/scene5/${law2}_option_active.png`"
+                alt=""
+              />
+              <img
+                v-else
+                :src="`/imgs/home/scene5/${law2}_option.png`"
+                alt=""
+              />
             </Button>
           </div>
           <div class="body">
             <img :src="`/imgs/home/scene5/${law}_detail.png`" alt="" />
+          </div>
+          <div class="video">
             <iframe
               v-if="law !== 0"
               width="100%"
-              height="450px"
+              height="300px"
               :src="`https://www.youtube.com/embed/${videos[law]}`"
               frameborder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
+            <div class="video_description">
+              <img :src="`/imgs/home/scene5/${law}_example.png`" alt="" />
+            </div>
           </div>
           <!-- <div class="example">
             <Button>
               <img src="/imgs/home/scene5/example_button.png" alt="" />
             </Button>
           </div> -->
-          <Button class="sound" @onClick="playAudio">
-            <img
-              v-if="audioIsPlaying"
-              src="/imgs/home/scene5/sound_off.png"
-              alt=""
-              srcset=""
-            />
-            <img v-else src="/imgs/home/scene5/sound_on.png" alt="" srcset="" />
-          </Button>
         </div>
       </div>
     </section>
@@ -1407,6 +1435,7 @@ section {
     position: relative;
     transition: all 0.5s ease 2s;
     transform: scale(0);
+    max-width: 1200px;
 
     .bg {
       img {
@@ -1416,16 +1445,20 @@ section {
 
     .heading {
       position: absolute;
-      top: 2%;
-      left: 12%;
-      width: 80%;
-      height: 30%;
+      top: 100px;
+      left: 50px;
+      width: 300px;
+      height: 50px;
+      text-align: left;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
+      align-items: center;
 
       img {
         width: 100%;
-        max-width: 250px;
+        max-width: 150px;
+        margin-left: 0px;
+        margin-right: 25px;
       }
     }
 
@@ -1435,6 +1468,7 @@ section {
       position: absolute;
       top: -20px;
       right: -20px;
+      z-index: 10000;
       img {
         width: 100%;
       }
@@ -1456,12 +1490,8 @@ section {
     }
 
     .sound {
-      position: absolute;
       width: 40px;
       height: 40px;
-      right: 10%;
-      top: 15%;
-      // bottom: 12%; // for old position
       img {
         width: 100%;
       }
@@ -1471,18 +1501,17 @@ section {
       display: flex;
       flex-direction: row;
       position: absolute;
-      left: 3%;
-      width: 97%;
-      bottom: 58%;
+      left: 6px;
+      top: 6px;
+      width: 98.9%;
     }
 
     .body {
       position: absolute;
-      top: 42%;
-      left: 10%;
-      width: 85%;
-      // height: 33%;
-      height: 50%;
+      top: 150px;
+      left: 50px;
+      width: 45%;
+      height: 70%;
       justify-content: center;
       align-items: center;
       overflow-y: auto;
@@ -1490,6 +1519,19 @@ section {
       img {
         width: 100%;
       }
+    }
+
+    .video {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      width: 45%;
+      height: 70%;
+      padding-left: 50px;
+    }
+
+    .video_description {
+      margin-top: 20px;
     }
   }
 }

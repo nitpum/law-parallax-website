@@ -1,5 +1,5 @@
 <template>
-  <div class="button">
+  <div :class="['button', { noAnimation: noAnimation }]">
     <div class="bg">
       <slot />
     </div>
@@ -17,6 +17,10 @@ export default {
     height: {
       type: Number,
       value: '50px'
+    },
+    noAnimation: {
+      type: Boolean,
+      value: false
     }
   }
 }
@@ -27,10 +31,13 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  transition: all 0.2s ease;
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
+
+  &:not(.noAnimation) {
+    transition: all 0.2s ease;
+    &:hover,
+    &:focus {
+      transform: scale(1.1);
+    }
   }
 
   .bg {
